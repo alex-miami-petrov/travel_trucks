@@ -20,17 +20,25 @@ const CatalogPage = () => {
   const { campers, status, error, filters } = useSelector(
     (state) => state.campers
   );
+
   const [location, setLocation] = useState(filters.location || "");
-  const [type, setType] = useState(filters.type || "");
-  const [ac, setAc] = useState(filters.ac || false);
-  const [tv, setTv] = useState(filters.tv || false);
+  const [form, setForm] = useState(filters.form || "");
+  const [AC, setAC] = useState(filters.AC || false);
+  const [TV, setTV] = useState(filters.TV || false);
   const [kitchen, setKitchen] = useState(filters.kitchen || false);
   const [transmission, setTransmission] = useState(filters.transmission || "");
 
   const handleFilterChange = () => {
-    const newFilters = { location, type, ac, tv, kitchen, transmission };
-    dispatch(setFilters(newFilters));
-    dispatch(fetchCampers(newFilters));
+    const newFilters = { location, form, AC, TV, kitchen, transmission };
+
+    const cleanFilters = Object.fromEntries(
+      Object.entries(newFilters).filter(
+        ([_, value]) => value !== "" && value !== undefined && value !== null
+      )
+    );
+
+    dispatch(setFilters(cleanFilters));
+    dispatch(fetchCampers(cleanFilters));
   };
 
   if (status === "loading") return <p>Loading...</p>;
@@ -46,24 +54,28 @@ const CatalogPage = () => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <select value={type} onChange={(e) => setType(e.target.value)}>
+
+        <select value={form} onChange={(e) => setForm(e.target.value)}>
           <option value="">Select Type</option>
+          <option value="alcove">Alcove</option>
           <option value="van">Van</option>
-          <option value="motorhome">Motorhome</option>
+          <option value="fullyIntegrated">Fully Integrated</option>
+          <option value="panelTruck">Panel Truck</option>
         </select>
+
         <label>
           <input
             type="checkbox"
-            checked={ac}
-            onChange={(e) => setAc(e.target.checked)}
+            checked={AC}
+            onChange={(e) => setAC(e.target.checked)}
           />{" "}
           AC
         </label>
         <label>
           <input
             type="checkbox"
-            checked={tv}
-            onChange={(e) => setTv(e.target.checked)}
+            checked={TV}
+            onChange={(e) => setTV(e.target.checked)}
           />{" "}
           TV
         </label>
@@ -75,6 +87,7 @@ const CatalogPage = () => {
           />{" "}
           Kitchen
         </label>
+
         <select
           value={transmission}
           onChange={(e) => setTransmission(e.target.value)}
@@ -83,10 +96,12 @@ const CatalogPage = () => {
           <option value="manual">Manual</option>
           <option value="automatic">Automatic</option>
         </select>
+
         <button onClick={handleFilterChange}>Filter</button>
       </div>
+
       <ul>
-        {Array.isArray(campers) ? (
+        {Array.isArray(campers) && campers.length > 0 ? (
           campers.map((camper) => (
             <li key={camper.id}>
               {camper.name} - ${camper.price.toFixed(2)}
