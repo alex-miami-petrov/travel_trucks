@@ -60,32 +60,33 @@
 
 import { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { refreshUser } from "./redux/auth/operations";
-import { selectIsRefreshing } from "./redux/auth/selectors";
+// import { refreshUser } from "./redux/auth/operations";
+// import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import { PrivateRoute } from "./components/PrivateRoute";
-import { RestrictedRoute } from "./components/RestrictedRoute";
+// import { PrivateRoute } from "./components/PrivateRoute";
+// import { RestrictedRoute } from "./components/RestrictedRoute";
 // import { AnimatePresence } from "framer-motion";
 
 const HomePage = lazy(() => import("./pages/homePage/homePage.jsx"));
-// const RegistrationPage = lazy(() =>
-//   import("./pages/RegistrationPage/RegistrationPage.jsx")
-// );
 const CatalogPage = lazy(() => import("./pages/catalogPage/catalogPage.jsx"));
 const CamperDetailsPage = lazy(() =>
-  import("./pages/camperDetailsPage/camperDetailsPage/.jsx")
+  import("./pages/camperDetailsPage/camperDetailsPage.jsx")
 );
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
+  // const isRefreshing = useSelector(selectIsRefreshing);
+
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(fetchCampers());
   }, [dispatch]);
 
-  return isRefreshing ? null : (
+  return (
     // <Layout>
     //   <Routes>
     //     <Route path="/" element={<HomePage />} />
@@ -112,12 +113,13 @@ export const App = () => {
     //     />
     //   </Routes>
     // </Layout>
-
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/catalog" element={<CatalogPage />} />
-      <Route path="/catalog/:id" element={<CamperDetailsPage />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/catalog/:id" element={<CamperDetailsPage />} />
+      </Routes>
+    </Layout>
   );
 };
 

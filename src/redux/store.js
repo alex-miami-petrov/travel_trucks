@@ -1,7 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import contactsReducer from "./contacts/slice";
-import filtersReducer from "./filters/slice";
-import authReducer from "./auth/slice";
+import campersReducer from "./campers/slice";
 
 import storage from "redux-persist/lib/storage";
 
@@ -24,13 +22,11 @@ const persistConfig = {
   blacklist: ["_persist"],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig, campersReducer);
 
 export const store = configureStore({
   reducer: {
-    contacts: contactsReducer,
-    filters: filtersReducer,
-    auth: persistedReducer,
+    campers: campersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -41,12 +37,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// export const store = configureStore({
-//   reducer: {
-//     contacts: contactsReducer,
-//     filters: filtersReducer,
-//   },
-// });
-
-// export default store;

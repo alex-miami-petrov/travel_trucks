@@ -1,6 +1,4 @@
 import { Navigation } from "../Navigation/Navigation";
-import { UserMenu } from "../UserMenu/UserMenu";
-import { useSelector } from "react-redux";
 
 import s from "./AppBar.module.css";
 
