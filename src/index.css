@@ -75,7 +75,7 @@ img {
 body {
   margin: 0;
 
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -87,7 +87,7 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid black;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -111,7 +111,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #d84343;
   }
   button {
     background-color: #f9f9f9;
@@ -120,13 +120,4 @@ button:focus-visible {
 
 html {
   scroll-behavior: smooth;
-}
-
-@media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding-left: 64px;
-    padding-right: 64px;
-    margin: 0 auto;
-  }
 }

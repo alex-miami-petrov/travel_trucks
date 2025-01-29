@@ -1,20 +1,14 @@
-import { AppBar } from "../../components/AppBar/AppBar.jsx";
-import { slideInFromRightScale } from "../../components/motion";
+import React from "react";
+
 import s from "./homePage.module.css";
-import { motion } from "framer-motion";
 
 const HomePage = () => {
   return (
     <>
       <div className={s.container}>
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={slideInFromRightScale()}
-          className={s.title}
-        >
-          Contacts manager welcome page <AppBar />
-        </motion.h1>
+        <h1>Campers of your dreams</h1>
+        <p>You can find everything you want in our catalog</p>
+        <button>View Now</button>
       </div>
     </>
   );

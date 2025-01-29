@@ -5,8 +5,10 @@ const API_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
-  async () => {
-    const response = await axios.get(API_URL);
+  async (filters = {}) => {
+    const params = new URLSearchParams(filters).toString();
+    const response = await axios.get(`${API_URL}?${params}`);
+    console.log("Fetched campers:", response.data);
     return response.data;
   }
 );
@@ -17,8 +19,13 @@ const campersSlice = createSlice({
     campers: [],
     status: "idle",
     error: null,
+    filters: {},
   },
-  reducers: {},
+  reducers: {
+    setFilters: (state, action) => {
+      state.filters = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampers.pending, (state) => {
@@ -35,4 +42,5 @@ const campersSlice = createSlice({
   },
 });
 
+export const { setFilters } = campersSlice.actions;
 export default campersSlice.reducer;
