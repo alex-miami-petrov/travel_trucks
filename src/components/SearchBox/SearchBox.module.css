@@ -1,0 +1,19 @@
+.searchBox {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* .searchBox input {
+  max-width: 235px;
+} */
+
+.searchBox {
+  max-width: 322px;
+}
+
+.searchBox input {
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}

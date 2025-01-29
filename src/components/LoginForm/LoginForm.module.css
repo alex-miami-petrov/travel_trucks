@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  width: 200px;
+  margin-bottom: 6px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.logBtn {
+  max-width: 90px;
+  padding: 0.3em 0.5em;
+  margin: 0;
+}

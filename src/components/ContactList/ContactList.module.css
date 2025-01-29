@@ -1,0 +1,32 @@
+li {
+  /* display: flex; */
+  align-items: center;
+  gap: 40px;
+  /* margin-right: 10px; */
+  border: 1px solid black;
+  padding: 8px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+button {
+  padding: 5px;
+  border-radius: 0px;
+  margin: unset;
+}
+
+.contactList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contactItem {
+  /* flex: 1 1 calc(25% - 10px); */
+  /* box-sizing: border-box; */
+  width: 250px;
+  height: 60px;
+}

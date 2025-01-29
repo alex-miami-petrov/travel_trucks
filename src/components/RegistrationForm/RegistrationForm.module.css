@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  width: 200px;
+  margin-bottom: 6px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.btn {
+  max-width: 90px;
+  margin: 0;
+}
