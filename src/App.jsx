@@ -66,15 +66,15 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { RestrictedRoute } from "./components/RestrictedRoute";
-import { AnimatePresence } from "framer-motion";
+// import { AnimatePresence } from "framer-motion";
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
-const RegistrationPage = lazy(() =>
-  import("./pages/RegistrationPage/RegistrationPage.jsx")
-);
-const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage.jsx"));
-const ContactsPage = lazy(() =>
-  import("./pages/ContactsPage/ContactsPage.jsx")
+const HomePage = lazy(() => import("./pages/homePage/homePage.jsx"));
+// const RegistrationPage = lazy(() =>
+//   import("./pages/RegistrationPage/RegistrationPage.jsx")
+// );
+const CatalogPage = lazy(() => import("./pages/catalogPage/catalogPage.jsx"));
+const CamperDetailsPage = lazy(() =>
+  import("./pages/camperDetailsPage/camperDetailsPage/.jsx")
 );
 
 export const App = () => {
@@ -86,32 +86,38 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? null : (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              component={<RegistrationPage />}
-              redirectTo="/contacts"
-            />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
-          }
-        />
-      </Routes>
-    </Layout>
+    // <Layout>
+    //   <Routes>
+    //     <Route path="/" element={<HomePage />} />
+    //     <Route
+    //       path="/register"
+    //       element={
+    //         <RestrictedRoute
+    //           component={<RegistrationPage />}
+    //           redirectTo="/contacts"
+    //         />
+    //       }
+    //     />
+    //     <Route
+    //       path="/login"
+    //       element={
+    //         <RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />
+    //       }
+    //     />
+    //     <Route
+    //       path="/contacts"
+    //       element={
+    //         <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
+    //       }
+    //     />
+    //   </Routes>
+    // </Layout>
+
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/catalog" element={<CatalogPage />} />
+      <Route path="/catalog/:id" element={<CamperDetailsPage />} />
+    </Routes>
   );
 };
 

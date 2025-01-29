@@ -1,5 +1,5 @@
 import { slideInFromRightScale } from "../../components/motion";
-import s from "./HomePage.module.css";
+import s from "./homePage.module.css";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
