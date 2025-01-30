@@ -8,12 +8,9 @@ export const AppBar = () => {
   return (
     <header className={s.header}>
       <NavLink to="/">
-        {" "}
         <img src={logo} alt="logo" />
       </NavLink>
-      {/* <a href="/">
-        <img src={logo} alt="logo" />
-      </a> */}
+
       <Navigation />
     </header>
   );

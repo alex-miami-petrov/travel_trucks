@@ -43,10 +43,9 @@
   line-height: 1.5;
   letter-spacing: -0.01em;
   color: #fff;
-  text-align: center;
-  transition: background-color 0, 5 linear;
 }
 
 .homeLink:hover {
   background-color: #d84343;
+  color: #fff;
 }
