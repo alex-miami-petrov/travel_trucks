@@ -114,27 +114,19 @@
 
 .filterBtn {
   display: grid;
-  align-items: end;
-  border: 1px solid #e44848;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #dadde1;
   border-radius: 12px;
-  padding-bottom: 16px;
   width: 112px;
   height: 96px;
+  transition: border 0.3s ease;
 }
 
 .filterBtn:hover,
 .filterBtn.active {
-  background: #e44848;
-  color: white;
-  border-color: #e44848;
-}
-
-.equipIcon {
-  /* position: absolute;
-  fill: #101828;
-  left: 11.5%;
-  top: 28%;
-  transform: translateY(50%); */
+  border: #e44848;
 }
 
 /* ===== СПИСОК КАРТОК ===== */
