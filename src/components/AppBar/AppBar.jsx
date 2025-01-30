@@ -1,7 +1,7 @@
-import { Navigation } from "../Navigation/navigation";
+import { Navigation } from "../navigation/navigation";
 import logo from "../../img/logo.png";
 
-import s from "./AppBar.module.css";
+import s from "./appBar.module.css";
 
 export const AppBar = () => {
   return (
