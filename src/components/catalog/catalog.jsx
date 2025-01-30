@@ -1,86 +1,104 @@
-import React from "react";
-import s from "./catalog.module.css";
-import Container from "../../utils/container/container.jsx";
-import icons from "../../img/icons.svg";
+// import React from "react";
+// import s from "./catalog.module.css";
+// import Container from "../../utils/container/container.jsx";
+// import icons from "../../img/icons.svg";
 
-const Catalog = () => {
-  return (
-    <section className={s.catalog}>
-      <Container>
-        <div className={s.wrapper}>
-          {/* ФІЛЬТРИ */}
-          <aside className={s.filters}>
-            <form className={s.form}>
-              {/* Локація */}
-              <div className={s.inputWrap}>
-                <label className={s.label} htmlFor="location">
-                  Location
-                </label>
-                <input name="location" placeholder="City" className={s.input} />
-                <svg className={s.inputIcon} width="20" height="20">
-                  <use href={`${icons}#icon-map`} />
-                </svg>
-              </div>
-              <h2 className={s.mainFilterTitle}>Filters</h2>
-              {/* Фільтр: Vehicle equipment */}
-              <div className={s.filterGroup}>
-                <h3 className={s.filterTitle}>Vehicle equipment</h3>
-                <div className={s.filterOptions}>
-                  <button type="button" className={s.filterBtn}>
-                    <svg className={s.equipIcon} width="32" height="28">
-                      <use href={`${icons}#icon-ac`} />
-                    </svg>
-                    AC
-                  </button>
-                  <button type="button" className={s.filterBtn}>
-                    Automatic
-                  </button>
-                  <button type="button" className={s.filterBtn}>
-                    Kitchen
-                  </button>
-                  <button type="button" className={s.filterBtn}>
-                    TV
-                  </button>
-                  <button type="button" className={s.filterBtn}>
-                    Bathroom
-                  </button>
-                </div>
-              </div>
+// const Catalog = () => {
+//   return (
+//     <section className={s.catalog}>
+//       <Container>
+//         <div className={s.wrapper}>
 
-              {/* Фільтр: Vehicle type */}
-              <div className={s.filterGroup}>
-                <h3 className={s.filterTitle}>Vehicle type</h3>
-                <div className={s.filterOptions}>
-                  <button type="button" className={s.filterBtn}>
-                    Van
-                  </button>
-                  <button type="button" className={s.filterBtn}>
-                    Fully Integrated
-                  </button>
-                  <button type="button" className={s.filterBtn}>
-                    Alcove
-                  </button>
-                </div>
-              </div>
+//           <aside className={s.filters}>
+//             <form className={s.form}>
 
-              {/* Кнопка пошуку */}
-              <button type="submit" className={s.searchBtn}>
-                Search
-              </button>
-            </form>
-          </aside>
+//               <div className={s.inputWrap}>
+//                 <label className={s.label} htmlFor="location">
+//                   Location
+//                 </label>
+//                 <input name="location" placeholder="City" className={s.input} />
+//                 <svg className={s.inputIcon} width="20" height="20">
+//                   <use href={`${icons}#icon-map`} />
+//                 </svg>
+//               </div>
+//               <h2 className={s.mainFilterTitle}>Filters</h2>
 
-          {/* СПИСОК КЕМПЕРІВ */}
-          <div className={s.catalogList}>
-            <p>Camper cards will be here</p>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-};
+//               <div className={s.filterGroup}>
+//                 <h3 className={s.filterTitle}>Vehicle equipment</h3>
+//                 <div className={s.filterOptions}>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-ac`} />
+//                     </svg>
+//                     AC
+//                   </button>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-trans`} />
+//                     </svg>
+//                     Automatic
+//                   </button>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-kitchen`} />
+//                     </svg>
+//                     Kitchen
+//                   </button>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-tv`} />
+//                     </svg>
+//                     TV
+//                   </button>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-bath`} />
+//                     </svg>
+//                     Bathroom
+//                   </button>
+//                 </div>
+//               </div>
 
-export default Catalog;
+//               <div className={s.filterGroup}>
+//                 <h3 className={s.filterTitle}>Vehicle type</h3>
+//                 <div className={s.filterOptions}>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-van`} />
+//                     </svg>
+//                     Van
+//                   </button>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-full`} />
+//                     </svg>
+//                     Fully Integrated
+//                   </button>
+//                   <button type="button" className={s.filterBtn}>
+//                     <svg className={s.equipIcon} width="32" height="32">
+//                       <use href={`${icons}#icon-alcove`} />
+//                     </svg>
+//                     Alcove
+//                   </button>
+//                 </div>
+//               </div>
+
+//               <button type="submit" className={s.searchBtn}>
+//                 Search
+//               </button>
+//             </form>
+//           </aside>
+
+//           <div className={s.catalogList}>
+//             <p>Camper cards will be here</p>
+//           </div>
+//         </div>
+//       </Container>
+//     </section>
+//   );
+// };
+
+// export default Catalog;
 
 // import React, { useState, useEffect } from "react";
 // import s from "./catalog.module.css";
@@ -235,3 +253,166 @@ export default Catalog;
 // };
 
 // export default Catalog;
+
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setLocation,
+  toggleEquipment,
+  setForm,
+} from "../../redux/filtersSlice";
+import { toggleFavorite } from "../../redux/favoritesSlice.js";
+import axios from "axios";
+import CamperCard from "../camperCard/camperCard";
+import Container from "../../utils/container/container.jsx";
+import icons from "../../img/icons.svg";
+import s from "./catalog.module.css";
+
+const equipmentFilters = [
+  { key: "AC", label: "AC", icon: "icon-ac" },
+  { key: "transmission", label: "Automatic", icon: "icon-trans" },
+  { key: "kitchen", label: "Kitchen", icon: "icon-kitchen" },
+  { key: "TV", label: "TV", icon: "icon-tv" },
+  { key: "bathroom", label: "Bathroom", icon: "icon-bath" },
+];
+
+const formFilters = [
+  { key: "van", label: "Van", icon: "icon-van" },
+  { key: "fullyIntegrated", label: "Fully Integrated", icon: "icon-full" },
+  { key: "alcove", label: "Alcove", icon: "icon-alcove" },
+];
+
+const Catalog = () => {
+  const dispatch = useDispatch();
+  const filters = useSelector((state) => state.filters);
+  const favorites = useSelector((state) => state.favorites);
+
+  const [campers, setCampers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers")
+      .then((res) => {
+        // Перевірка, чи є це масив у полі 'items'
+        if (Array.isArray(res.data.items)) {
+          setCampers(res.data.items);
+        } else {
+          console.error("Invalid data format:", res.data);
+        }
+      })
+      .catch((err) => console.error("Error fetching campers:", err));
+  }, []);
+
+  const filteredCampers = campers.filter((camper) => {
+    if (
+      filters.location &&
+      !camper.location.toLowerCase().includes(filters.location.toLowerCase())
+    ) {
+      return false;
+    }
+
+    if (filters.form && camper.form !== filters.form) {
+      return false;
+    }
+
+    if (filters.equipment.length > 0) {
+      return filters.equipment.every((eq) => camper[eq] === true);
+    }
+
+    return true;
+  });
+
+  return (
+    <section className={s.catalog}>
+      <Container>
+        <div className={s.wrapper}>
+          {/* ФІЛЬТРИ */}
+          <aside className={s.filters}>
+            <form className={s.form}>
+              {/* Локація */}
+              <div className={s.inputWrap}>
+                <label className={s.label} htmlFor="location">
+                  Location
+                </label>
+                <input
+                  name="location"
+                  placeholder="City"
+                  className={s.input}
+                  value={filters.location}
+                  onChange={(e) => dispatch(setLocation(e.target.value))}
+                />
+                <svg className={s.inputIcon} width="20" height="20">
+                  <use href={`${icons}#icon-map`} />
+                </svg>
+              </div>
+
+              <h2 className={s.mainFilterTitle}>Filters</h2>
+
+              {/* Фільтр: Vehicle equipment */}
+              <div className={s.filterGroup}>
+                <h3 className={s.filterTitle}>Vehicle equipment</h3>
+                <div className={s.filterOptions}>
+                  {equipmentFilters.map(({ key, label, icon }) => (
+                    <button
+                      key={key}
+                      type="button"
+                      className={`${s.filterBtn} ${
+                        filters.equipment.includes(key) ? s.active : ""
+                      }`}
+                      onClick={() => dispatch(toggleEquipment(key))}
+                    >
+                      <svg className={s.equipIcon} width="32" height="32">
+                        <use href={`${icons}#${icon}`} />
+                      </svg>
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Фільтр: Vehicle type */}
+              <div className={s.filterGroup}>
+                <h3 className={s.filterTitle}>Vehicle type</h3>
+                <div className={s.filterOptions}>
+                  {formFilters.map(({ key, label, icon }) => (
+                    <button
+                      key={key}
+                      type="button"
+                      className={`${s.filterBtn} ${
+                        filters.form === key ? s.active : ""
+                      }`}
+                      onClick={() => dispatch(setForm(key))}
+                    >
+                      <svg className={s.equipIcon} width="32" height="32">
+                        <use href={`${icons}#${icon}`} />
+                      </svg>
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Кнопка пошуку */}
+              <button type="submit" className={s.searchBtn}>
+                Search
+              </button>
+            </form>
+          </aside>
+
+          {/* СПИСОК КЕМПЕРІВ */}
+          <div className={s.catalogList}>
+            {filteredCampers.length > 0 ? (
+              filteredCampers.map((camper) => (
+                <CamperCard key={camper.id} camper={camper} />
+              ))
+            ) : (
+              <p>No campers found</p>
+            )}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+};
+
+export default Catalog;
