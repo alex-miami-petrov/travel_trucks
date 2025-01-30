@@ -82,6 +82,11 @@
   left: 6%;
   top: 30%;
   transform: translateY(50%);
+  transition: fill 0.3s ease;
+}
+
+.inputIcon.active {
+  fill: #101828;
 }
 
 .mainFilterTitle {
@@ -125,12 +130,13 @@
   transition: border 0.3s ease;
 }
 
-.filterBtn.active {
+.filterBtn:hover,
+.filterBtn:active {
   border: #e44848;
 }
 
-.full {
-  gap: 10px;
+.filterBtn.active {
+  border: #e44848;
 }
 
 .searchBtn {

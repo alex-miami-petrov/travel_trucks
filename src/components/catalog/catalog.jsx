@@ -286,8 +286,14 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const favorites = useSelector((state) => state.favorites);
-
+  const [isInputActive, setIsInputActive] = useState(false);
   const [campers, setCampers] = useState([]);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setIsInputActive(value.length > 0);
+    dispatch(setLocation(value));
+  };
 
   useEffect(() => {
     axios
@@ -339,15 +345,17 @@ const Catalog = () => {
                   placeholder="City"
                   className={s.input}
                   value={filters.location}
-                  onChange={(e) => dispatch(setLocation(e.target.value))}
+                  onChange={handleInputChange}
                 />
-                <svg className={s.inputIcon} width="20" height="20">
+                <svg
+                  className={`${s.inputIcon} ${isInputActive ? s.active : ""}`} // Додаємо клас active
+                  width="20"
+                  height="20"
+                >
                   <use href={`${icons}#icon-map`} />
                 </svg>
               </div>
-
               <h2 className={s.mainFilterTitle}>Filters</h2>
-
               {/* Фільтр: Vehicle equipment */}
               <div className={s.filterGroup}>
                 <h3 className={s.filterTitle}>Vehicle equipment</h3>
@@ -357,8 +365,8 @@ const Catalog = () => {
                       key={key}
                       type="button"
                       className={`${s.filterBtn} ${
-                        filters.equipment.includes(key) ? s.active : ""
-                      }`}
+                        filters.form === key ? s.active : ""
+                      } ${key === "fullyIntegrated" ? s.full : ""}`}
                       onClick={() => dispatch(toggleEquipment(key))}
                     >
                       <svg className={s.equipIcon} width="32" height="32">
@@ -369,7 +377,7 @@ const Catalog = () => {
                   ))}
                 </div>
               </div>
-
+              fullyIntegrated
               {/* Фільтр: Vehicle type */}
               <div className={s.filterGroup}>
                 <h3 className={s.filterTitle}>Vehicle type</h3>
@@ -391,8 +399,6 @@ const Catalog = () => {
                   ))}
                 </div>
               </div>
-
-              {/* Кнопка пошуку */}
               <button type="submit" className={s.searchBtn}>
                 Search
               </button>
