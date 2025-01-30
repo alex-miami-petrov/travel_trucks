@@ -1,0 +1,14 @@
+.input {
+  position: relative;
+  padding: 16px 48px;
+  border-radius: 12px;
+  border-color: transparent;
+  width: 360px;
+  background-color: #f7f7f7;
+}
+
+.inputIcon {
+  position: absolute;
+  fill: #6c717b;
+  transform: translate(-50%, 50%);
+}
