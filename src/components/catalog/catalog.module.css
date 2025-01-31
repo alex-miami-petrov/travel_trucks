@@ -124,18 +124,19 @@
   /* justify-content: center; */
   justify-items: center;
   flex-direction: column;
-  /* border: 1px solid #dadde1; */
-  border: 2px solid black;
+  border: 1px solid #dadde1;
+  /* border: 2px solid black; */
   border-radius: 12px;
   width: 112px;
   height: 96px;
   transition: border 0.3s ease;
 }
 
-/* .filterBtn:hover,
+.filterBtn:hover,
+.filterBtn:focus,
 .filterBtn:active {
   border: #e44848;
-} */
+}
 
 .filterBtn.active {
   border: #e44848;
@@ -180,4 +181,10 @@
 
 .loadMoreBtn:hover {
   border: #d84343;
+}
+
+.catalogList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }

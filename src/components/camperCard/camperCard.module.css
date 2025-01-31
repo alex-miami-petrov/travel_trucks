@@ -1,4 +1,4 @@
-.catalogList {
+/* .catalogList {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -29,16 +29,68 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+} */
+
+.camperCard {
+  border: 1px solid #dadde1;
+  border-radius: 20px;
+  padding: 24px;
+  width: 888px;
+  height: 368px;
+  display: flex;
+  gap: 32px;
 }
 
-.loadMore {
-  margin-top: 20px;
-  display: block;
-  width: 200px;
-  padding: 10px;
-  background: #e44848;
+.camperImage {
+  border-radius: 10px;
+  width: 292px;
+  height: 320px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.camperInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.camperInfo h3 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.camperInfo p {
+  margin: 5px 0;
+}
+
+/* .buttonGroup {
+  display: flex;
+  gap: 10px;
+} */
+
+.showMore {
+  background: #007bff;
   color: white;
+}
+
+.iconFavorite {
+  fill: #ccc;
+}
+
+.iconFavoriteActive {
+  fill: #f00;
+  stroke: #f00;
+}
+
+.favBtn {
+  background: none;
+  overflow: hidden;
+  outline: none;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+}
+
+.favBtn:focus,
+.favBtn:active {
+  outline: none;
 }
