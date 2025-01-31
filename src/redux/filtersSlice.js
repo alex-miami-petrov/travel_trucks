@@ -19,6 +19,13 @@ const filtersSlice = createSlice({
         ? (state.equipment = state.equipment.filter((eq) => eq !== item))
         : state.equipment.push(item);
     },
+    // toggleEquipment(state, action) {
+    //   const item = action.payload;
+
+    //   state.equipment = state.equipment.includes(item)
+    //     ? state.equipment.filter((eq) => eq !== item)
+    //     : [...state.equipment, item];
+    // },
     setForm(state, action) {
       state.form = action.payload;
     },

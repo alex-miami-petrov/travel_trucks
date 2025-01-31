@@ -53,13 +53,11 @@ const Catalog = () => {
     fetchCampers();
   }, []);
 
-  // Обробник зміни вводу в полі Location
   const handleInputChange = (e) => {
     const value = e.target.value;
     dispatch(setLocation(value));
   };
 
-  // Пошук за натисканням кнопки
   const handleSearch = (e) => {
     e.preventDefault();
     fetchCampers();
@@ -84,12 +82,10 @@ const Catalog = () => {
     return true;
   });
 
-  // Перевірка наявності тексту в інпуті для зміни кольору іконки
   const isInputFilled = filters.location.trim().length > 0;
 
-  // Логіка для завантаження додаткових карток
   const handleLoadMore = () => {
-    setVisibleCount(visibleCount + 4); // Завантажуємо ще 4 картки
+    setVisibleCount(visibleCount + 4);
   };
 
   return (
@@ -110,9 +106,7 @@ const Catalog = () => {
                   onChange={handleInputChange} // Оновлюємо тільки локацію
                 />
                 <svg
-                  className={`${s.inputIcon} ${
-                    isInputFilled ? s.active : ""
-                  }`} // Змінюємо колір, якщо є текст
+                  className={`${s.inputIcon} ${isInputFilled ? s.active : ""}`}
                   width="20"
                   height="20"
                 >
