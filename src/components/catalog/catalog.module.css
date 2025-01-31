@@ -132,13 +132,13 @@
   transition: border 0.3s ease;
 }
 
-.filterBtn:hover,
+/* .filterBtn:hover,
 .filterBtn:focus,
 .filterBtn:active {
   border: #e44848;
-}
+} */
 
-.filterBtn.active {
+.active {
   border: #e44848;
 }
 

@@ -31,7 +31,7 @@ const Catalog = () => {
   const filters = useSelector((state) => state.filters);
   const [campers, setCampers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(4); // Створюємо стан для кількості видимих карток
+  const [visibleCount, setVisibleCount] = useState(4);
 
   const fetchCampers = () => {
     setLoading(true);
@@ -103,7 +103,7 @@ const Catalog = () => {
                   placeholder="City"
                   className={s.input}
                   value={filters.location}
-                  onChange={handleInputChange} // Оновлюємо тільки локацію
+                  onChange={handleInputChange}
                 />
                 <svg
                   className={`${s.inputIcon} ${isInputFilled ? s.active : ""}`}
