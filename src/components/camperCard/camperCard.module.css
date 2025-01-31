@@ -100,6 +100,7 @@
   line-height: 1.33;
 
   min-width: auto;
+  margin-bottom: 8px;
 }
 
 .campPrice {
@@ -125,6 +126,7 @@
 .rewLocWrap {
   display: flex;
   gap: 16px;
+  margin-bottom: 24px;
 }
 
 .locWrap {
@@ -138,4 +140,9 @@
   line-height: 1.5;
   text-decoration: underline;
   text-decoration-skip-ink: none;
+}
+
+.reviewText {
+  color: #475467;
+  font-size: 16px;
 }
