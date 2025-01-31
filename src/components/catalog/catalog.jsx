@@ -31,6 +31,7 @@ const Catalog = () => {
   const filters = useSelector((state) => state.filters);
   const [campers, setCampers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(4); // Створюємо стан для кількості видимих карток
 
   const fetchCampers = () => {
     setLoading(true);
@@ -52,16 +53,16 @@ const Catalog = () => {
     fetchCampers();
   }, []);
 
-  // Оновлюємо лише локацію при зміні інпуту, але не викликаємо пошук
+  // Обробник зміни вводу в полі Location
   const handleInputChange = (e) => {
     const value = e.target.value;
     dispatch(setLocation(value));
   };
 
-  // Викликаємо пошук після натискання кнопки "Search"
+  // Пошук за натисканням кнопки
   const handleSearch = (e) => {
     e.preventDefault();
-    fetchCampers(); // Пошук виконується тільки при натисканні кнопки "Search"
+    fetchCampers();
   };
 
   const filteredCampers = campers.filter((camper) => {
@@ -85,6 +86,11 @@ const Catalog = () => {
 
   // Перевірка наявності тексту в інпуті для зміни кольору іконки
   const isInputFilled = filters.location.trim().length > 0;
+
+  // Логіка для завантаження додаткових карток
+  const handleLoadMore = () => {
+    setVisibleCount(visibleCount + 4); // Завантажуємо ще 4 картки
+  };
 
   return (
     <section className={s.catalog}>
@@ -167,11 +173,16 @@ const Catalog = () => {
             {loading ? (
               <p>Loading...</p>
             ) : filteredCampers.length > 0 ? (
-              filteredCampers.map((camper) => (
-                <CamperCard key={camper.id} camper={camper} />
-              ))
+              filteredCampers
+                .slice(0, visibleCount)
+                .map((camper) => <CamperCard key={camper.id} camper={camper} />)
             ) : (
               <p>No campers found</p>
+            )}
+            {filteredCampers.length > visibleCount && (
+              <button className={s.loadMoreBtn} onClick={handleLoadMore}>
+                Load More
+              </button>
             )}
           </div>
         </div>
