@@ -123,17 +123,18 @@
   /* justify-content: center; */
   justify-items: center;
   flex-direction: column;
-  border: 1px solid #dadde1;
+  /* border: 1px solid #dadde1; */
+  border: 2px solid black;
   border-radius: 12px;
   width: 112px;
   height: 96px;
   transition: border 0.3s ease;
 }
 
-.filterBtn:hover,
+/* .filterBtn:hover,
 .filterBtn:active {
   border: #e44848;
-}
+} */
 
 .filterBtn.active {
   border: #e44848;

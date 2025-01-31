@@ -32,4 +32,5 @@ const filtersSlice = createSlice({
 
 export const { setLocation, toggleEquipment, setForm, resetFilters } =
   filtersSlice.actions;
+
 export default filtersSlice.reducer;
