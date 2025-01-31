@@ -77,14 +77,17 @@
 
 .titleWrap {
   display: flex;
-  align-items: baseline;
-  gap: 30px;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .priceFavWrap {
   display: flex;
   align-items: center;
   gap: 13px;
+  flex-shrink: 0;
 }
 
 .imgWrap {
@@ -93,10 +96,11 @@
 }
 
 .campNameTitle {
-  min-width: 340px;
   font-weight: 600;
   font-size: 24px;
   line-height: 1.33;
+
+  min-width: auto;
 }
 
 .campPrice {
@@ -104,4 +108,8 @@
   font-size: 24px;
 
   line-height: 1.33;
+}
+
+.camperInfo {
+  width: 100%;
 }
