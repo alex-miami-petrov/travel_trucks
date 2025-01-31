@@ -86,8 +86,7 @@
 .priceFavWrap {
   display: flex;
   align-items: center;
-  gap: 13px;
-  flex-shrink: 0;
+  gap: 10px;
 }
 
 .imgWrap {
@@ -112,4 +111,31 @@
 
 .camperInfo {
   width: 100%;
+}
+
+.starIcon {
+  margin-right: 4px;
+}
+
+.mapIcon {
+  fill: #101828;
+  margin-top: 2px;
+}
+
+.rewLocWrap {
+  display: flex;
+  gap: 16px;
+}
+
+.locWrap {
+  display: flex;
+
+  gap: 4px;
+}
+
+.rewSpan {
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
 }

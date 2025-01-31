@@ -92,11 +92,22 @@ const CamperCard = ({ camper }) => {
             </div>
           </div>
         </div>
-
-        <p>{camper.location}</p>
-        <p>
-          ⭐ {averageRating.toFixed(1)} ({camper.reviews.length} Reviews)
-        </p>
+        <div className={s.rewLocWrap}>
+          <p>
+            <svg className={s.starIcon} width="16" height="16">
+              <use href={`${icons}#icon-star`} />
+            </svg>
+            <span className={s.rewSpan}>
+              {averageRating.toFixed(1)}({camper.reviews.length} Reviews)
+            </span>
+          </p>
+          <div className={s.locWrap}>
+            <svg className={s.mapIcon} width="16" height="16">
+              <use href={`${icons}#icon-map`} />
+            </svg>
+            <p>{camper.location}</p>
+          </div>
+        </div>
 
         <button className={s.showMore}>Show more</button>
       </div>

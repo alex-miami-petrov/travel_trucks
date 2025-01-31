@@ -111,7 +111,7 @@ const Catalog = () => {
                 />
                 <svg
                   className={`${s.inputIcon} ${
-                    isInputFilled ? s.iconFilled : ""
+                    isInputFilled ? s.active : ""
                   }`} // Змінюємо колір, якщо є текст
                   width="20"
                   height="20"
