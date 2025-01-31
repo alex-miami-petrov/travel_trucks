@@ -78,11 +78,13 @@
 .titleWrap {
   display: flex;
   align-items: baseline;
+  gap: 30px;
 }
 
 .priceFavWrap {
   display: flex;
   align-items: center;
+  gap: 13px;
 }
 
 .imgWrap {
@@ -91,7 +93,7 @@
 }
 
 .campNameTitle {
-  min-width: 380px;
+  min-width: 340px;
   font-weight: 600;
   font-size: 24px;
   line-height: 1.33;
