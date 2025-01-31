@@ -71,9 +71,9 @@ const CamperCard = ({ camper }) => {
       />
       <div className={s.camperInfo}>
         <div className={s.titleWrap}>
-          <h3>{camper.name}</h3>
+          <h3 className={s.campNameTitle}>{camper.name}</h3>
           <div className={s.priceFavWrap}>
-            <p>€{camper.price}</p>
+            <p className={s.campPrice}>€{camper.price.toFixed(2)}</p>
             <div className={s.buttonGroup}>
               <button
                 className={s.favBtn}
@@ -91,14 +91,14 @@ const CamperCard = ({ camper }) => {
               </button>
             </div>
           </div>
-
-          <p>{camper.location}</p>
-          <p>
-            ⭐ {averageRating.toFixed(1)} ({camper.reviews.length} Reviews)
-          </p>
-
-          <button className={s.showMore}>Show more</button>
         </div>
+
+        <p>{camper.location}</p>
+        <p>
+          ⭐ {averageRating.toFixed(1)} ({camper.reviews.length} Reviews)
+        </p>
+
+        <button className={s.showMore}>Show more</button>
       </div>
     </div>
   );

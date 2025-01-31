@@ -38,7 +38,7 @@
   width: 888px;
   height: 368px;
   display: flex;
-  gap: 32px;
+  gap: 24px;
 }
 
 .camperImage {
@@ -49,33 +49,13 @@
   object-position: center;
 }
 
-.camperInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.camperInfo h3 {
-  font-size: 1.5em;
-  margin: 0;
-}
-
-.camperInfo p {
-  margin: 5px 0;
-}
-
-/* .buttonGroup {
-  display: flex;
-  gap: 10px;
-} */
-
 .showMore {
   background: #007bff;
   color: white;
 }
 
 .iconFavorite {
-  fill: #ccc;
+  fill: #101828;
 }
 
 .iconFavoriteActive {
@@ -93,4 +73,33 @@
 .favBtn:focus,
 .favBtn:active {
   outline: none;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: baseline;
+}
+
+.priceFavWrap {
+  display: flex;
+  align-items: center;
+}
+
+.imgWrap {
+  display: flex;
+  gap: 24px;
+}
+
+.campNameTitle {
+  min-width: 380px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.campPrice {
+  font-weight: 600;
+  font-size: 24px;
+
+  line-height: 1.33;
 }
