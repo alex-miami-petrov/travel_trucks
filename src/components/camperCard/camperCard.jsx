@@ -54,14 +54,13 @@ const CamperCard = ({ camper }) => {
   const favorites = useSelector((state) => state.favorites);
   const isFavorite = favorites.includes(camper.id);
 
-  const averageRating =
-    camper.reviews.length > 0
-      ? camper.reviews.reduce(
-          (sum, review) => sum + review.reviewer_rating,
-          0
-        ) / camper.reviews.length
-      : 0;
-
+  const averageRating = camper.reviews.length
+    ? camper.reviews.reduce(
+        (sum, review) => sum + Number(review.reviewer_rating),
+        0
+      ) / camper.reviews.length
+    : 0;
+  console.log("Average rating for Camper", camper.id, ":", averageRating);
   return (
     <div className={s.camperCard}>
       <img

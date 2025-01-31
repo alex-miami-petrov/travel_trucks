@@ -58,11 +58,11 @@
 
 // export default App;
 
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import { fetchCampers } from "./redux/campers/slice.js";
+// import { fetchCampers } from "./redux/campers/slice.js";
 import HomePage from "./pages/homePage/homePage.jsx";
 import CatalogPage from "./pages/catalogPage/catalogPage.jsx";
 import CamperDetailsPage from "./pages/camperDetailsPage/camperDetailsPage.jsx";
@@ -74,12 +74,6 @@ import CamperDetailsPage from "./pages/camperDetailsPage/camperDetailsPage.jsx";
 // );
 
 export const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCampers());
-  }, [dispatch]);
-
   return (
     <Layout>
       <Routes>
