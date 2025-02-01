@@ -97,7 +97,10 @@ const CamperCard = ({ camper }) => {
       />
       <div className={s.camperInfo}>
         <div className={s.titleWrap}>
-          <h3 className={s.campNameTitle}>{camper.name}</h3>
+          <div className={s.nameWrap}>
+            <h3 className={s.campNameTitle}>{camper.name}</h3>
+          </div>
+
           <div className={s.priceFavWrap}>
             <p className={s.campPrice}>€{camper.price.toFixed(2)}</p>
             <div className={s.buttonGroup}>
@@ -125,8 +128,7 @@ const CamperCard = ({ camper }) => {
             </svg>
             <span className={s.rewSpan}>
               {averageRating.toFixed(1)}
-              {camper.reviews?.length &&
-                `(${camper.reviews.length} Reviews)`}
+              {camper.reviews?.length && `(${camper.reviews.length} Reviews)`}
             </span>
           </p>
           <div className={s.locWrap}>
