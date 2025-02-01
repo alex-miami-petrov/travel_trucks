@@ -5,6 +5,7 @@ import s from "./details.module.css";
 import icons from "../../img/icons.svg";
 import { calculateAverageRating, featureIcons } from "../../utils/camperUtils";
 import Container from "../../utils/container/container.jsx";
+import Modal from "../imageModal/imageModal.jsx";
 
 const API_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
 
@@ -13,11 +14,12 @@ const Details = () => {
   const [camper, setCamper] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null); // Стан для вибраної картинки
 
   useEffect(() => {
     const fetchCamperById = async () => {
       if (!id) {
-        console.error("❌ Missing camper ID!");
+        console.error("Missing camper ID!");
         return;
       }
 
@@ -46,8 +48,16 @@ const Details = () => {
   }
 
   if (!camper) {
-    return null;
+    return <p>No camper data available.</p>;
   }
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <section className={s.camperDetails}>
@@ -74,12 +84,13 @@ const Details = () => {
         </div>
         <p className={s.price}>€{camper.price.toFixed(2)}</p>
         <div className={s.gallery}>
-          {camper.gallery.map((img, index) => (
+          {camper.gallery?.map((img, index) => (
             <img
               key={index}
               src={img.original}
               alt={`${camper.name} ${index + 1}`}
               className={s.galleryImage}
+              onClick={() => handleImageClick(img.original)} // Обробник кліку на картинку
             />
           ))}
         </div>
@@ -113,6 +124,15 @@ const Details = () => {
           </p>
         </div>
       </Container>
+
+      {/* Інтеграція модалки */}
+      <Modal isOpen={!!selectedImage} closeModal={handleCloseModal}>
+        <img
+          src={selectedImage}
+          alt="Selected"
+          className={s.modalImage} // Стиль для зображення в модалці
+        />
+      </Modal>
     </section>
   );
 };
