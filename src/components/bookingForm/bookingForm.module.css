@@ -20,6 +20,16 @@
   background-color: #f7f7f7;
   border: none;
   margin-bottom: 14px;
+  outline: none;
+}
+
+.field:-webkit-autofill,
+.field:-webkit-autofill:hover,
+.field:-webkit-autofill:focus,
+.field:-webkit-autofill:active {
+  -webkit-text-fill-color: #000 !important; /* Чорний текст */
+  -webkit-box-shadow: 0 0 0px 1000px #f7f7f7 inset !important; /* Фон #f7f7f7 */
+  background-color: #f7f7f7 !important; /* Запобігаємо зміні кольору */
 }
 
 .commentField {
@@ -30,6 +40,7 @@
   background-color: #f7f7f7;
   border: none;
   margin-bottom: 24px;
+  outline: none;
 }
 
 .subBtn {

@@ -7,6 +7,10 @@ import s from "./bookingForm.module.css";
 import { startOfDay } from "date-fns";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import enGB from "date-fns/locale/en-GB";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { format } from "date-fns";
+
 registerLocale("en-GB", enGB);
 
 const BookingForm = () => {
@@ -33,7 +37,24 @@ const BookingForm = () => {
   });
 
   const handleSubmit = (values) => {
-    console.log("Form data:", values);
+    const formattedDate = values.bookingDate
+      ? format(values.bookingDate, "dd/MM/yyyy")
+      : "";
+
+    const formData = {
+      ...values,
+      bookingDate: formattedDate,
+    };
+
+    toast.success("Your booking was successfully submitted!", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -55,7 +76,9 @@ const BookingForm = () => {
                 className={s.field}
                 name="name"
                 type="text"
+                id="name"
                 placeholder="Name*"
+                autoComplete="name"
               />
               <ErrorMessage
                 name="name"
@@ -70,7 +93,9 @@ const BookingForm = () => {
                 className={s.field}
                 name="email"
                 type="email"
+                id="email"
                 placeholder="Email*"
+                autoComplete="email"
               />
               <ErrorMessage
                 name="email"
@@ -80,7 +105,6 @@ const BookingForm = () => {
             </div>
 
             <div>
-              <label htmlFor="datePickerId"></label>
               <DatePicker
                 id={datePickerId}
                 className={s.field}
@@ -94,6 +118,7 @@ const BookingForm = () => {
                 locale="en-GB"
                 weekStartsOn={1}
                 showTimeSelect={false}
+                autoComplete="off"
               />
               <ErrorMessage
                 name="bookingDate"
@@ -107,8 +132,10 @@ const BookingForm = () => {
               <Field
                 className={s.commentField}
                 name="comment"
+                id="comment"
                 as="textarea"
                 placeholder="Comment"
+                autoComplete="off"
               />
               <ErrorMessage
                 name="comment"
@@ -123,6 +150,8 @@ const BookingForm = () => {
           </Form>
         )}
       </Formik>
+
+      <ToastContainer />
     </div>
   );
 };
