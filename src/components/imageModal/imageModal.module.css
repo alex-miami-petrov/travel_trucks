@@ -4,21 +4,19 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8); /* темний напівпрозорий фон */
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-/* контент модалки */
 .modalContent {
   position: relative;
   max-width: 80%;
   max-height: 80%;
 }
 
-/* кнопка закриття */
 .closeBtn {
   position: absolute;
   top: 10px;
@@ -31,7 +29,6 @@
   z-index: 1100;
 }
 
-/* зображення в модалці */
 .modalImage {
   width: 100%;
   height: auto;
