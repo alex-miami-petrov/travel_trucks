@@ -3,9 +3,11 @@ import s from "./features.module.css";
 import { featureIcons } from "../../utils/camperUtils.jsx";
 import icons from "../../img/icons.svg";
 import { useOutletContext } from "react-router-dom";
+import BookingForm from "../bookingForm/bookingForm.jsx";
 
 const Features = () => {
   const { camper } = useOutletContext();
+
   return (
     <>
       <div className={s.featWrap}>
@@ -52,6 +54,7 @@ const Features = () => {
       <div className="formWrap">
         <h2 className={s.formTitle}></h2>
         <p className={s.formText}></p>
+        <BookingForm />
       </div>
     </>
   );
