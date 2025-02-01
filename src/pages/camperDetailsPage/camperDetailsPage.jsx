@@ -6,7 +6,6 @@ const CamperDetailsPage = () => {
   return (
     <>
       <Details />
-      <Outlet />
     </>
   );
 };

@@ -1,9 +1,9 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import axios from "axios";
 import s from "./details.module.css";
 import icons from "../../img/icons.svg";
-import { calculateAverageRating, featureIcons } from "../../utils/camperUtils";
+import { calculateAverageRating } from "../../utils/camperUtils";
 import Container from "../../utils/container/container.jsx";
 import Modal from "../imageModal/imageModal.jsx";
 
@@ -101,42 +101,26 @@ const Details = () => {
 
         <p className={s.description}>{camper.description}</p>
 
-        {/* <div className={s.featuresWrap}>
-          {featureIcons.map(({ key, label, icon }) => (
-            <div key={key} className={s.featureItem}>
-              <svg width="20" height="20">
-                <use href={`${icons}#${icon}`} />
-              </svg>
-              <span>{label}</span>
-            </div>
-          ))}
-        </div> */}
-
-        {/* <div className={s.additionalInfo}>
-          <p>
-            <strong>Dimensions:</strong> {camper.length} (L) x {camper.width}{" "}
-            (W) x {camper.height} (H)
-          </p>
-          <p>
-            <strong>Tank Capacity:</strong> {camper.tank}
-          </p>
-          <p>
-            <strong>Fuel Consumption:</strong> {camper.consumption}
-          </p>
-          <p>
-            <strong>Engine:</strong> {camper.engine}
-          </p>
-        </div> */}
         <ul className={s.infoList}>
           <li>
-            <Link to="features">Features</Link>
+            <NavLink
+              to="features"
+              className={({ isActive }) => (isActive ? s.activeLink : "")}
+            >
+              Features
+            </NavLink>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <NavLink
+              to="reviews"
+              className={({ isActive }) => (isActive ? s.activeLink : "")}
+            >
+              Reviews
+            </NavLink>
           </li>
         </ul>
         <Suspense fallback={<div>Loading subpage...</div>}>
-          <Outlet context={{ id }} />
+          <Outlet context={{ camper }} />
         </Suspense>
       </Container>
 
