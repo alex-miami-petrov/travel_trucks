@@ -152,4 +152,37 @@
 
 .reviewWrapper {
   max-width: 525px;
+  margin-bottom: 24px;
+}
+
+.featuresWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 368px;
+  margin-bottom: 24px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  padding: 12px 18px;
+  width: auto;
+  height: 48px;
+  background-color: #f2f4f7;
+}
+
+.showMore {
+  border-radius: 200px;
+  padding: 16px 40px;
+  max-width: 166px;
+  height: 56px;
+  background-color: #e44848;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: #fff;
+  border: none;
 }

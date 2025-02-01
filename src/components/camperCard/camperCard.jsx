@@ -89,6 +89,14 @@ const CamperCard = ({ camper }) => {
       ) / camper.reviews.length
     : 0;
 
+  const featureIcons = [
+    { key: "AC", label: "AC", icon: "icon-ac" },
+    { key: "transmission", label: "Automatic", icon: "icon-trans" },
+    { key: "kitchen", label: "Kitchen", icon: "icon-kitchen" },
+    { key: "TV", label: "TV", icon: "icon-tv" },
+    { key: "bathroom", label: "Bathroom", icon: "icon-bath" },
+  ];
+
   return (
     <div className={s.camperCard}>
       <img
@@ -138,6 +146,20 @@ const CamperCard = ({ camper }) => {
         <div className={s.reviewWrapper}>
           {camper.reviews.length > 0 && (
             <p className={s.reviewText}>{camper.reviews[0].comment}</p>
+          )}
+        </div>
+
+        <div className={s.featuresWrap}>
+          {featureIcons.map(
+            ({ key, label, icon }) =>
+              camper[key] && (
+                <div key={key} className={s.featureItem}>
+                  <svg width="20" height="20">
+                    <use href={`${icons}#${icon}`} />
+                  </svg>
+                  <span>{label}</span>
+                </div>
+              )
           )}
         </div>
 
