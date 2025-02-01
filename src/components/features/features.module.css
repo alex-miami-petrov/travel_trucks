@@ -1,0 +1,42 @@
+.featWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+
+  width: 522px;
+  height: 520px;
+  background-color: #f7f7f7;
+  padding: 52px 44px;
+}
+
+.iconsWrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.iconsItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  padding: 12px 18px;
+  width: auto;
+  height: 48px;
+  background-color: #f2f4f7;
+}
+
+.infoTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  border-bottom: 1px solid #dadde1;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+}

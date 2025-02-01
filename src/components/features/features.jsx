@@ -19,22 +19,33 @@ const Features = () => {
         ))}
       </div>
       <div className={s.infoWrap}>
-        <h2 className={s.infoTitle}></h2>
-        <div className={s.additionalInfo}>
-          <p>
-            <strong>Dimensions:</strong> {camper.length} (L) x {camper.width}
-            (W) x {camper.height} (H)
-          </p>
-          <p>
-            <strong>Tank Capacity:</strong> {camper.tank}
-          </p>
-          <p>
-            <strong>Fuel Consumption:</strong> {camper.consumption}
-          </p>
-          <p>
-            <strong>Engine:</strong> {camper.engine}
-          </p>
-        </div>
+        <h2 className={s.infoTitle}>Vehicle details</h2>
+        <ul className={s.infoList}>
+          <li className={s.infoItem}>
+            <p>Form</p>
+            <p>{camper.form}</p>
+          </li>
+          <li className={s.infoItem}>
+            <p>Length</p>
+            <p>{camper.length}</p>
+          </li>
+          <li className={s.infoItem}>
+            <p>Width</p>
+            <p>{camper.width}</p>
+          </li>
+          <li className={s.infoItem}>
+            <p>Height</p>
+            <p>{camper.height}</p>
+          </li>
+          <li className={s.infoItem}>
+            <p>Tank</p>
+            <p>{camper.tank}</p>
+          </li>
+          <li className={s.infoItem}>
+            <p>Consumption</p>
+            <p>{camper.consumption}</p>
+          </li>
+        </ul>
       </div>
     </div>
   );
