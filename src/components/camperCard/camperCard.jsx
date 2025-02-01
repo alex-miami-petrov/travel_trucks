@@ -76,6 +76,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../redux/favoritesSlice";
 import s from "./camperCard.module.css";
 import icons from "../../img/icons.svg";
+import { Link } from "react-router-dom";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
@@ -162,8 +163,9 @@ const CamperCard = ({ camper }) => {
               )
           )}
         </div>
-
-        <button className={s.showMore}>Show more</button>
+        <Link to={`/catalog/:id`}>
+          <button className={s.showMore}>Show more</button>
+        </Link>
       </div>
     </div>
   );
