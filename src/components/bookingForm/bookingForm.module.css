@@ -1,0 +1,29 @@
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.formText {
+  color: #6c717b;
+  margin-bottom: 24px;
+}
+
+.field {
+  color: #6c717b;
+  border-radius: 12px;
+  padding: 18px 337px 18px 18px;
+  width: 527px;
+  height: 60px;
+  background-color: #f7f7f7;
+}
+
+.commentField {
+  border-radius: 10px;
+  padding: 18px 308px 76px 18px;
+  width: 527px;
+  height: 118px;
+  background-color: #f7f7f7;
+}

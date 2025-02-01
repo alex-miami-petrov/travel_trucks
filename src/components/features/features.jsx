@@ -9,7 +9,7 @@ const Features = () => {
   const { camper } = useOutletContext();
 
   return (
-    <>
+    <div className={s.featContainer}>
       <div className={s.featWrap}>
         <div className={s.iconsWrap}>
           {featureIcons.map(({ key, label, icon }) => (
@@ -51,12 +51,10 @@ const Features = () => {
           </ul>
         </div>
       </div>
-      <div className="formWrap">
-        <h2 className={s.formTitle}></h2>
-        <p className={s.formText}></p>
+      <div className={s.formWrap}>
         <BookingForm />
       </div>
-    </>
+    </div>
   );
 };
 

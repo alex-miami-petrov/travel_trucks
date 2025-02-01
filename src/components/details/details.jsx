@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import s from "./details.module.css";
 import icons from "../../img/icons.svg";
@@ -15,6 +15,7 @@ const Details = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null); // Стан для вибраної картинки
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCamperById = async () => {
@@ -38,6 +39,12 @@ const Details = () => {
 
     fetchCamperById();
   }, [id]);
+
+  useEffect(() => {
+    if (camper) {
+      navigate(`/catalog/${id}/features`, { replace: true });
+    }
+  }, [camper, id, navigate]);
 
   if (loading) {
     return <p>Loading...</p>;

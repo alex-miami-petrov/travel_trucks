@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as Yup from "yup";
+import s from "./bookingForm.module.css";
 
 const BookingForm = () => {
   const initialValues = {
@@ -23,7 +24,7 @@ const BookingForm = () => {
       .required("Email is required"),
 
     bookingDate: Yup.date().required("Booking date is required"),
-    comment: Yup.string().required("Comment is required"),
+    comment: Yup.string(),
   });
 
   const handleSubmit = (values) => {
@@ -32,6 +33,10 @@ const BookingForm = () => {
 
   return (
     <div>
+      <h2 className={s.formTitle}>Book your campervan now</h2>
+      <p className={s.formText}>
+        Stay connected! We are always ready to help you.
+      </p>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -40,10 +45,11 @@ const BookingForm = () => {
         {({ values, setFieldValue }) => (
           <Form>
             <div>
-              <label htmlFor="name">Name*</label>
-              <Field name="name" type="text" />
+              <label htmlFor="name"></label>
+              <Field className={s.field} name="name" type="text" />
               <ErrorMessage
                 name="name"
+                placeholder="Name*"
                 component="div"
                 style={{ color: "red" }}
               />
@@ -51,7 +57,7 @@ const BookingForm = () => {
 
             <div>
               <label htmlFor="email">Email*</label>
-              <Field name="email" type="email" />
+              <Field className={s.field} name="email" type="email" />
               <ErrorMessage
                 name="email"
                 component="div"
@@ -62,6 +68,7 @@ const BookingForm = () => {
             <div>
               <label htmlFor="bookingDate">Booking date*</label>
               <DatePicker
+                className={s.field}
                 selected={values.bookingDate}
                 onChange={(date) => setFieldValue("bookingDate", date)}
                 dateFormat="dd/MM/yyyy"
@@ -76,6 +83,7 @@ const BookingForm = () => {
             <div>
               <label htmlFor="comment">Comment</label>
               <Field
+                className={s.commentField}
                 name="comment"
                 as="textarea"
                 placeholder="Enter your comment"

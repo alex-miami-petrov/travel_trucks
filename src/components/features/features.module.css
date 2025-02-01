@@ -1,3 +1,8 @@
+.featContainer {
+  display: flex;
+  gap: 40px;
+}
+
 .featWrap {
   display: flex;
   flex-direction: column;
