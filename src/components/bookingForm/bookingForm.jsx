@@ -36,7 +36,7 @@ const BookingForm = () => {
     comment: Yup.string(),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, { resetForm }) => {
     const formattedDate = values.bookingDate
       ? format(values.bookingDate, "dd/MM/yyyy")
       : "";
@@ -53,8 +53,9 @@ const BookingForm = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
     });
+
+    resetForm();
   };
 
   return (
