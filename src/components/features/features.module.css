@@ -39,4 +39,11 @@
 .infoItem {
   display: flex;
   justify-content: space-between;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.infoItem:last-child {
+  margin-bottom: 0;
 }
