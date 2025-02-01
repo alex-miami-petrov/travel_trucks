@@ -1,0 +1,63 @@
+.camperDetails {
+  padding-top: 48px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  margin-bottom: 8px;
+}
+
+.rewLocWrap {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.locWrap {
+  display: flex;
+
+  gap: 4px;
+}
+
+.starIcon {
+  margin-right: 4px;
+}
+
+.mapIcon {
+  fill: #101828;
+  margin-top: 2px;
+}
+
+.rewSpan {
+  font-size: 16px;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+
+  line-height: 1.33;
+  margin-bottom: 28px;
+}
+
+.gallery {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 28px;
+}
+
+.galleryImage {
+  border-radius: 10px;
+  width: 292px;
+  object-fit: contain;
+}
+
+.description {
+  font-size: 16px;
+
+  color: #475467;
+}
