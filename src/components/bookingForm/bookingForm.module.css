@@ -41,6 +41,7 @@
   border: none;
   margin-bottom: 24px;
   outline: none;
+  resize: none;
 }
 
 .subBtn {
