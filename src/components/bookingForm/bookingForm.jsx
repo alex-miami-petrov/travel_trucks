@@ -4,12 +4,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as Yup from "yup";
 import s from "./bookingForm.module.css";
+import { startOfDay } from "date-fns";
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import enGB from "date-fns/locale/en-GB";
+registerLocale("en-GB", enGB);
 
 const BookingForm = () => {
+  const datePickerId = "bookingDate";
   const initialValues = {
     name: "",
     email: "",
-    bookingDate: new Date(),
+    bookingDate: null,
     comment: "",
   };
 
@@ -46,18 +51,27 @@ const BookingForm = () => {
           <Form>
             <div>
               <label htmlFor="name"></label>
-              <Field className={s.field} name="name" type="text" />
+              <Field
+                className={s.field}
+                name="name"
+                type="text"
+                placeholder="Name*"
+              />
               <ErrorMessage
                 name="name"
-                placeholder="Name*"
                 component="div"
                 style={{ color: "red" }}
               />
             </div>
 
             <div>
-              <label htmlFor="email">Email*</label>
-              <Field className={s.field} name="email" type="email" />
+              <label htmlFor="email"></label>
+              <Field
+                className={s.field}
+                name="email"
+                type="email"
+                placeholder="Email*"
+              />
               <ErrorMessage
                 name="email"
                 component="div"
@@ -66,12 +80,20 @@ const BookingForm = () => {
             </div>
 
             <div>
-              <label htmlFor="bookingDate">Booking date*</label>
+              <label htmlFor="datePickerId"></label>
               <DatePicker
+                id={datePickerId}
                 className={s.field}
-                selected={values.bookingDate}
-                onChange={(date) => setFieldValue("bookingDate", date)}
+                placeholderText="Booking date*"
+                selected={values.bookingDate || null}
+                onChange={(date) => {
+                  const cleanedDate = startOfDay(date);
+                  setFieldValue("bookingDate", cleanedDate);
+                }}
                 dateFormat="dd/MM/yyyy"
+                locale="en-GB"
+                weekStartsOn={1}
+                showTimeSelect={false}
               />
               <ErrorMessage
                 name="bookingDate"
@@ -81,12 +103,12 @@ const BookingForm = () => {
             </div>
 
             <div>
-              <label htmlFor="comment">Comment</label>
+              <label htmlFor="comment"></label>
               <Field
                 className={s.commentField}
                 name="comment"
                 as="textarea"
-                placeholder="Enter your comment"
+                placeholder="Comment"
               />
               <ErrorMessage
                 name="comment"
@@ -95,7 +117,9 @@ const BookingForm = () => {
               />
             </div>
 
-            <button type="submit">Submit</button>
+            <button className={s.subBtn} type="submit">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

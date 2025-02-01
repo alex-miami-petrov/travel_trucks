@@ -1,6 +1,7 @@
 .featContainer {
   display: flex;
   gap: 40px;
+  padding-bottom: 80px;
 }
 
 .featWrap {
@@ -10,7 +11,7 @@
   border-radius: 10px;
 
   width: 522px;
-  height: 520px;
+  height: 588px;
   background-color: #f7f7f7;
   padding: 52px 44px;
 }
@@ -51,4 +52,13 @@
 
 .infoItem:last-child {
   margin-bottom: 0;
+}
+
+.formWrap {
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 44px;
+  width: 634px;
+  height: 588px;
+  padding: 57px 44px;
 }
