@@ -89,13 +89,6 @@ const CamperCard = ({ camper }) => {
       ) / camper.reviews.length
     : 0;
 
-  const truncateReview = (reviewText) => {
-    if (reviewText.length > 60) {
-      return reviewText.slice(0, 60) + "...";
-    }
-    return reviewText;
-  };
-
   return (
     <div className={s.camperCard}>
       <img
@@ -132,7 +125,7 @@ const CamperCard = ({ camper }) => {
               <use href={`${icons}#icon-star`} />
             </svg>
             <span className={s.rewSpan}>
-              {averageRating.toFixed(1)} ({camper.reviews.length} Reviews)
+              {averageRating.toFixed(1)}({camper.reviews.length} Reviews)
             </span>
           </p>
           <div className={s.locWrap}>
@@ -144,9 +137,7 @@ const CamperCard = ({ camper }) => {
         </div>
         <div className={s.reviewWrapper}>
           {camper.reviews.length > 0 && (
-            <p className={s.reviewText}>
-              {truncateReview(camper.reviews[0].comment)}
-            </p>
+            <p className={s.reviewText}>{camper.reviews[0].comment}</p>
           )}
         </div>
 
