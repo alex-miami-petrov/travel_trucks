@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { Suspense, useEffect, useState } from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
 import axios from "axios";
 import s from "./details.module.css";
 import icons from "../../img/icons.svg";
@@ -76,8 +76,7 @@ const Details = () => {
             </svg>
             <span className={s.rewSpan}>
               {averageRating.toFixed(1)}
-              {camper.reviews?.length > 0 &&
-                `(${camper.reviews.length} Reviews)`}
+              {camper.reviews?.length && `(${camper.reviews.length} Reviews)`}
             </span>
           </p>
           <div className={s.locWrap}>
@@ -95,14 +94,14 @@ const Details = () => {
               src={img.original}
               alt={`${camper.name} ${index + 1}`}
               className={s.galleryImage}
-              onClick={() => handleImageClick(img.original)} // Обробник кліку на картинку
+              onClick={() => img.original && handleImageClick(img.original)}
             />
           ))}
         </div>
 
         <p className={s.description}>{camper.description}</p>
 
-        <div className={s.featuresWrap}>
+        {/* <div className={s.featuresWrap}>
           {featureIcons.map(({ key, label, icon }) => (
             <div key={key} className={s.featureItem}>
               <svg width="20" height="20">
@@ -111,9 +110,9 @@ const Details = () => {
               <span>{label}</span>
             </div>
           ))}
-        </div>
+        </div> */}
 
-        <div className={s.additionalInfo}>
+        {/* <div className={s.additionalInfo}>
           <p>
             <strong>Dimensions:</strong> {camper.length} (L) x {camper.width}{" "}
             (W) x {camper.height} (H)
@@ -127,16 +126,22 @@ const Details = () => {
           <p>
             <strong>Engine:</strong> {camper.engine}
           </p>
-        </div>
+        </div> */}
+        <ul className={s.infoList}>
+          <li>
+            <Link to="features">Features</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet context={{ id }} />
+        </Suspense>
       </Container>
 
-      {/* Інтеграція модалки */}
       <Modal isOpen={!!selectedImage} closeModal={handleCloseModal}>
-        <img
-          src={selectedImage}
-          alt="Selected"
-          className={s.modalImage} // Стиль для зображення в модалці
-        />
+        <img src={selectedImage} alt="Selected" className={s.modalImage} />
       </Modal>
     </section>
   );

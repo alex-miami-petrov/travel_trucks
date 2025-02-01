@@ -125,7 +125,7 @@ const CamperCard = ({ camper }) => {
             </svg>
             <span className={s.rewSpan}>
               {averageRating.toFixed(1)}
-              {camper.reviews?.length > 0 &&
+              {camper.reviews?.length &&
                 `(${camper.reviews.length} Reviews)`}
             </span>
           </p>
