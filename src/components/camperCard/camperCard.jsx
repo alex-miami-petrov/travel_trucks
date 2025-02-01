@@ -86,6 +86,8 @@ const CamperCard = ({ camper }) => {
 
   const averageRating = calculateAverageRating(camper.reviews, camper.rating);
 
+  const location = camper.location.split(", ").reverse().join(", ");
+
   return (
     <div className={s.camperCard}>
       <img
@@ -122,14 +124,16 @@ const CamperCard = ({ camper }) => {
               <use href={`${icons}#icon-star`} />
             </svg>
             <span className={s.rewSpan}>
-              {averageRating.toFixed(1)}({camper.reviews.length} Reviews)
+              {averageRating.toFixed(1)}
+              {camper.reviews?.length > 0 &&
+                `(${camper.reviews.length} Reviews)`}
             </span>
           </p>
           <div className={s.locWrap}>
             <svg className={s.mapIcon} width="16" height="16">
               <use href={`${icons}#icon-map`} />
             </svg>
-            <p>{camper.location}</p>
+            <p>{location}</p>
           </div>
         </div>
         <div className={s.reviewWrapper}>
