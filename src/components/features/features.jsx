@@ -49,7 +49,10 @@ const Features = () => {
           </ul>
         </div>
       </div>
-      <div className="formWrap"></div>
+      <div className="formWrap">
+        <h2 className={s.formTitle}></h2>
+        <p className={s.formText}></p>
+      </div>
     </>
   );
 };
