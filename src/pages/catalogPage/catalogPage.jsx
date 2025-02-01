@@ -3,9 +3,9 @@ import Catalog from "../../components/catalog/catalog.jsx";
 
 const CatalogPage = () => {
   return (
-    <div>
+    <>
       <Catalog />
-    </div>
+    </>
   );
 };
 

@@ -77,26 +77,14 @@ import { toggleFavorite } from "../../redux/favoritesSlice";
 import s from "./camperCard.module.css";
 import icons from "../../img/icons.svg";
 import { Link } from "react-router-dom";
+import { calculateAverageRating, featureIcons } from "../../utils/camperUtils";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const isFavorite = favorites.includes(camper.id);
 
-  const averageRating = camper.reviews.length
-    ? camper.reviews.reduce(
-        (sum, review) => sum + Number(review.reviewer_rating),
-        0
-      ) / camper.reviews.length
-    : 0;
-
-  const featureIcons = [
-    { key: "AC", label: "AC", icon: "icon-ac" },
-    { key: "transmission", label: "Automatic", icon: "icon-trans" },
-    { key: "kitchen", label: "Kitchen", icon: "icon-kitchen" },
-    { key: "TV", label: "TV", icon: "icon-tv" },
-    { key: "bathroom", label: "Bathroom", icon: "icon-bath" },
-  ];
+  const averageRating = calculateAverageRating(camper.reviews, camper.rating);
 
   return (
     <div className={s.camperCard}>
@@ -163,7 +151,7 @@ const CamperCard = ({ camper }) => {
               )
           )}
         </div>
-        <Link to={`/catalog/:id`}>
+        <Link to={`/catalog/${camper.id}`}>
           <button className={s.showMore}>Show more</button>
         </Link>
       </div>

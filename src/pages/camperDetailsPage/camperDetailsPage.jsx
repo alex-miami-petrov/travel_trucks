@@ -1,10 +1,11 @@
 import React from "react";
+import Details from "../../components/details/details.jsx";
 
 const CamperDetailsPage = () => {
   return (
-    <div>
-      <h1>Camper Details</h1>
-    </div>
+    <>
+      <Details />
+    </>
   );
 };
 
