@@ -90,6 +90,7 @@
 
 .starIcon {
   margin-right: 4px;
+  padding-top: 2px;
 }
 
 .mapIcon {
@@ -107,6 +108,11 @@
   display: flex;
 
   gap: 4px;
+}
+
+.rewWrap {
+  display: flex;
+  align-items: baseline;
 }
 
 .rewSpan {

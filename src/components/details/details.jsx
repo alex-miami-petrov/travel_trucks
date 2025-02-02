@@ -229,15 +229,17 @@ const Details = () => {
           <h2 className={s.title}>{camper.name}</h2>
         </div>
         <div className={s.rewLocWrap}>
-          <p>
+          <div className={s.rewWrap}>
             <svg className={s.starIcon} width="16" height="16">
               <use href={`${icons}#icon-star`} />
             </svg>
-            <span className={s.rewSpan}>
-              {averageRating.toFixed(1)}
-              {camper.reviews?.length && `(${camper.reviews.length} Reviews)`}
-            </span>
-          </p>
+            <p>
+              <span className={s.rewSpan}>
+                {averageRating.toFixed(1)}
+                {camper.reviews?.length && `(${camper.reviews.length} Reviews)`}
+              </span>
+            </p>
+          </div>
           <div className={s.locWrap}>
             <svg className={s.mapIcon} width="16" height="16">
               <use href={`${icons}#icon-map`} />

@@ -9,6 +9,11 @@
   margin-bottom: 8px;
 }
 
+.rewWrap {
+  display: flex;
+  align-items: baseline;
+}
+
 .rewLocWrap {
   display: flex;
   gap: 16px;
@@ -23,6 +28,7 @@
 
 .starIcon {
   margin-right: 4px;
+  padding-top: 2px;
 }
 
 .mapIcon {
