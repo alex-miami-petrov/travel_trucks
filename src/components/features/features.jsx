@@ -4,15 +4,10 @@ import { featureIcons } from "../../utils/camperUtils.jsx";
 import icons from "../../img/icons.svg";
 import { useOutletContext } from "react-router-dom";
 import BookingForm from "../bookingForm/bookingForm.jsx";
+import { formatText } from "../../utils/formatText.jsx";
 
 const Features = () => {
   const { camper } = useOutletContext();
-
-  const formatText = (text) => {
-    return text
-      .replace(/([A-Z])/g, " $1")
-      .replace(/^./, (str) => str.toUpperCase());
-  };
 
   const camperInfo = [
     { label: "Form", value: formatText(camper.form) },
