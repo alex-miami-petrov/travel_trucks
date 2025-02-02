@@ -1,9 +1,8 @@
-// import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import HomePage from "./pages/homePage/homePage.jsx";
-import CamperDetailsPage from "./pages/camperDetailsPage/camperDetailsPage.jsx";
-import CatalogPage from "./pages/catalogPage/catalogPage.jsx";
+import HomePage from "../src/pages/homePage/homePage.jsx";
+import CamperDetailsPage from "../src/pages/camperDetailsPage/camperDetailsPage.jsx";
+import CatalogPage from "../src/pages/catalogPage/catalogPage.jsx";
 
 import Features from "./components/features/features.jsx";
 import Reviews from "./components/reviews/reviews.jsx";
