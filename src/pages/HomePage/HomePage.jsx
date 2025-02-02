@@ -4,9 +4,9 @@ import Home from "../../components/home/home.jsx";
 
 const HomePage = () => {
   return (
-    <>
+    <div>
       <Home />
-    </>
+    </div>
   );
 };
 
