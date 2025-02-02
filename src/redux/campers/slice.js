@@ -1,56 +1,51 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchCampers, fetchCamperById } from "./campersOperations";
 
-const API_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
-
-export const fetchCampers = createAsyncThunk(
-  "campers/fetchCampers",
-  async (filters = {}) => {
-    const cleanFilters = {};
-
-    // Перевірка, чи є значення в фільтрах, і додаємо лише заповнені значення
-    Object.keys(filters).forEach((key) => {
-      if (filters[key] || filters[key] === false) {
-        cleanFilters[key] = filters[key];
-      }
-    });
-
-    const params = new URLSearchParams(cleanFilters).toString();
-
-    const response = await axios.get(`${API_URL}?${params}`);
-
-    return response.data;
-  }
-);
+const initialState = {
+  campers: [],
+  selectedCamper: null,
+  isLoading: false,
+  error: null,
+};
 
 const campersSlice = createSlice({
   name: "campers",
-  initialState: {
-    campers: [],
-    status: "idle",
-    error: null,
-    filters: {},
-  },
+  initialState,
   reducers: {
-    setFilters: (state, action) => {
-      state.filters = action.payload;
+    clearSelectedCamper(state) {
+      state.selectedCamper = null;
     },
   },
   extraReducers: (builder) => {
     builder
+
       .addCase(fetchCampers.pending, (state) => {
-        state.status = "loading";
+        state.isLoading = true;
+        state.error = null;
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.isLoading = false;
         state.campers = action.payload;
       })
       .addCase(fetchCampers.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(fetchCamperById.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.selectedCamper = action.payload;
+      })
+      .addCase(fetchCamperById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { setFilters } = campersSlice.actions;
+export const { clearSelectedCamper } = campersSlice.actions;
 export default campersSlice.reducer;

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setLocation,
   toggleEquipment,
   setForm,
-} from "../../redux/filtersSlice";
-import axios from "axios";
+} from "../../redux/filters/slice.js";
 import CamperCard from "../camperCard/camperCard";
 import Container from "../../utils/container/container.jsx";
 import icons from "../../img/icons.svg";
 import s from "./catalog.module.css";
+import { selectFilters } from "../../redux/filters/selector.js";
+import fetchCampers from "../../services/fetchCampers.jsx";
+import useInitialData from "../../services/useInitialData";
 
 const equipmentFilters = [
   { key: "AC", label: "AC", icon: "icon-ac" },
@@ -20,69 +22,51 @@ const equipmentFilters = [
 ];
 
 const formFilters = [
-  { key: "van", label: "Van", icon: "icon-van" },
+  { key: "panelTruck", label: "Van", icon: "icon-van" },
   { key: "fullyIntegrated", label: "Fully Integrated", icon: "icon-full" },
   { key: "alcove", label: "Alcove", icon: "icon-alcove" },
 ];
 
 const Catalog = () => {
   const dispatch = useDispatch();
-  const filters = useSelector((state) => state.filters);
+  const filters = useSelector(selectFilters);
   const [campers, setCampers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(4);
 
-  const fetchCampers = () => {
-    setLoading(true);
-    axios
-      .get("https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers")
-      .then((res) => {
-        if (Array.isArray(res.data.items)) {
-          setCampers(res.data.items);
-        } else {
-          console.error("Invalid data format:", res.data);
-        }
-      })
-      .catch((err) => console.error("Error fetching campers:", err))
-      .finally(() => setLoading(false));
-  };
+  useInitialData(setCampers);
 
-  useEffect(() => {
-    fetchCampers();
-  }, []);
+  const fetchCampersData = async () => {
+    setLoading(true);
+    const data = await fetchCampers(filters);
+    setCampers(data);
+    setLoading(false);
+
+    localStorage.setItem("campers", JSON.stringify(data));
+  };
 
   const handleInputChange = (e) => {
     dispatch(setLocation(e.target.value));
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    fetchCampers();
+  const handleEquipmentClick = (key) => {
+    dispatch(toggleEquipment(key));
   };
 
-  const filteredCampers = campers.filter((camper) => {
-    if (
-      filters.location &&
-      !camper.location.toLowerCase().includes(filters.location.toLowerCase())
-    ) {
-      return false;
-    }
-
-    if (filters.form && camper.form !== filters.form) {
-      return false;
-    }
-
-    if (filters.equipment.length > 0) {
-      return filters.equipment.every((eq) => camper[eq] === true);
-    }
-
-    return true;
-  });
-
-  const isInputFilled = filters.location.trim().length > 0;
+  const handleFormClick = (key) => {
+    dispatch(setForm(key));
+  };
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 4);
+  };
+
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    setCampers([]);
+    fetchCampersData();
+
+    localStorage.setItem("filters", JSON.stringify(filters));
   };
 
   return (
@@ -90,7 +74,7 @@ const Catalog = () => {
       <Container>
         <div className={s.wrapper}>
           <aside className={s.filters}>
-            <form className={s.form} onSubmit={handleSearch}>
+            <form className={s.form} onSubmit={handleSearchClick}>
               <div className={s.inputWrap}>
                 <label className={s.label} htmlFor="location-input">
                   Location
@@ -104,7 +88,9 @@ const Catalog = () => {
                   onChange={handleInputChange}
                 />
                 <svg
-                  className={`${s.inputIcon} ${isInputFilled ? s.active : ""}`}
+                  className={`${s.inputIcon} ${
+                    filters.location ? s.active : ""
+                  }`}
                   width="20"
                   height="20"
                 >
@@ -124,7 +110,7 @@ const Catalog = () => {
                       className={`${s.filterBtn} ${
                         filters.equipment.includes(key) ? s.active : ""
                       }`}
-                      onClick={() => dispatch(toggleEquipment(key))}
+                      onClick={() => handleEquipmentClick(key)}
                     >
                       <svg className={s.equipIcon} width="32" height="32">
                         <use href={`${icons}#${icon}`} />
@@ -145,7 +131,7 @@ const Catalog = () => {
                       className={`${s.filterBtn} ${
                         filters.form === key ? s.active : ""
                       }`}
-                      onClick={() => dispatch(setForm(key))}
+                      onClick={() => handleFormClick(key)}
                     >
                       <svg className={s.equipIcon} width="32" height="32">
                         <use href={`${icons}#${icon}`} />
@@ -165,14 +151,14 @@ const Catalog = () => {
           <div className={s.catalogList}>
             {loading ? (
               <p>Loading...</p>
-            ) : filteredCampers.length > 0 ? (
-              filteredCampers
+            ) : campers.length > 0 ? (
+              campers
                 .slice(0, visibleCount)
                 .map((camper) => <CamperCard key={camper.id} camper={camper} />)
             ) : (
               <p>No campers found</p>
             )}
-            {filteredCampers.length > visibleCount && (
+            {campers.length > visibleCount && (
               <button className={s.loadMoreBtn} onClick={handleLoadMore}>
                 Load More
               </button>
@@ -185,53 +171,3 @@ const Catalog = () => {
 };
 
 export default Catalog;
-
-// import React, { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { setLocation, toggleEquipment, setForm } from "../../redux/filtersSlice";
-// import { selectFilteredCampers } from "../../redux/selectors";
-// import CamperCard from "../camperCard/camperCard";
-// import Container from "../../utils/container/container";
-// import s from "./catalog.module.css";
-
-// const Catalog = () => {
-//   const dispatch = useDispatch();
-//   const filters = useSelector((state) => state.filters);
-//   const filteredCampers = useSelector(selectFilteredCampers);
-
-//   const [visibleCount, setVisibleCount] = useState(4);
-
-//   const handleLoadMore = () => {
-//     setVisibleCount(visibleCount + 4);
-//   };
-
-//   return (
-//     <section className={s.catalog}>
-//       <Container>
-//         <div className={s.wrapper}>
-//           <aside className={s.filters}>
-
-//           </aside>
-
-//           <div className={s.catalogList}>
-//             {filteredCampers.length > 0 ? (
-//               filteredCampers.slice(0, visibleCount).map((camper) => (
-//                 <CamperCard key={camper.id} camper={camper} />
-//               ))
-//             ) : (
-//               <p>No campers found</p>
-//             )}
-
-//             {filteredCampers.length > visibleCount && (
-//               <button className={s.loadMoreBtn} onClick={handleLoadMore}>
-//                 Load More
-//               </button>
-//             )}
-//           </div>
-//         </div>
-//       </Container>
-//     </section>
-//   );
-// };
-
-// export default Catalog;

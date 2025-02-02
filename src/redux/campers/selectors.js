@@ -1,3 +1,4 @@
-export const selectContacts = (state) => state.contacts.items;
-export const selectLoading = (state) => state.contacts.loading;
-export const selectError = (state) => state.contacts.error;
+export const selectCampers = (state) => state.campers.campers;
+export const selectedCamper = (state) => state.campers.selectedCamper;
+export const selectLoading = (state) => state.campers.loading;
+export const selectError = (state) => state.campers.error;

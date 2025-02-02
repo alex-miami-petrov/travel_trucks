@@ -35,6 +35,15 @@
   width: 360px;
   background-color: #f7f7f7;
   margin-bottom: 40px;
+  outline: none;
+}
+
+.field:-webkit-autofill,
+.field:-webkit-autofill:hover,
+.field:-webkit-autofill:focus,
+.field:-webkit-autofill:active {
+  -webkit-text-fill-color: #000 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #f7f7f7 inset !important;
 }
 
 .inputIcon {
@@ -85,23 +94,17 @@
   justify-items: center;
   flex-direction: column;
   border: 1px solid #dadde1;
-  /* border: 2px solid black; */
+
   border-radius: 12px;
   width: 112px;
   height: 96px;
-  transition: border 0.3s ease;
+
+  transition: border-color 0.5s ease;
 }
 
-/* .filterBtn:hover,
-.filterBtn:focus,
-.filterBtn:active {
-  border: #e44848;
-} */
-
-.active {
-  border: #e44848;
+.filterBtn.active {
+  border-color: #e44848;
 }
-
 .searchBtn {
   margin-top: 40px;
   border-radius: 200px;
