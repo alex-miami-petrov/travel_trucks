@@ -4,7 +4,8 @@ import {
   setLocation,
   toggleEquipment,
   setForm,
-} from "../../redux/filters/slice.js";
+  resetFilters,
+} from "../../redux/filters/slice.js"; // Імпортуємо resetFilters
 import CamperCard from "../camperCard/camperCard";
 import Container from "../../utils/container/container.jsx";
 import icons from "../../img/icons.svg";
@@ -63,9 +64,14 @@ const Catalog = () => {
 
   const handleSearchClick = (e) => {
     e.preventDefault();
-    setCampers([]);
-    fetchCampersData();
 
+    // Скидаємо фільтри
+    dispatch(resetFilters());
+
+    setCampers([]); // очищаємо список кемперів
+    fetchCampersData(); // завантажуємо нові дані
+
+    // Зберігаємо фільтри в localStorage
     localStorage.setItem("filters", JSON.stringify(filters));
   };
 
