@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import NotFoundPage from "./pages/notFoundPage.jsx";
+
 import Features from "./components/features/features.jsx";
 import Reviews from "./components/reviews/reviews.jsx";
 
@@ -21,7 +21,6 @@ export const App = () => {
           <Route path="features" element={<Features />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
   );
