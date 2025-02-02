@@ -8,12 +8,8 @@
   gap: 40px;
 }
 
-/* ===== ФІЛЬТРИ ===== */
 .filters {
   width: 360px;
-  /* padding: 20px; */
-  /* background: #f8f8f8; */
-  /* border-radius: 10px; */
 }
 
 .label {
@@ -31,19 +27,21 @@
 .input {
   padding: 16px 48px;
   border-radius: 12px;
-  border-color: transparent;
+  border: none;
   width: 360px;
   background-color: #f7f7f7;
   margin-bottom: 40px;
   outline: none;
 }
 
-.field:-webkit-autofill,
-.field:-webkit-autofill:hover,
-.field:-webkit-autofill:focus,
-.field:-webkit-autofill:active {
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
   -webkit-text-fill-color: #000 !important;
   -webkit-box-shadow: 0 0 0px 1000px #f7f7f7 inset !important;
+  background-color: #f7f7f7 !important;
+  background-clip: content-box !important;
 }
 
 .inputIcon {
@@ -61,13 +59,10 @@
 
 .mainFilterTitle {
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
   color: #475467;
 }
 
 .filterGroup {
-  /* position: relative; */
   margin-top: 32px;
 }
 
