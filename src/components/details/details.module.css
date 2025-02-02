@@ -15,7 +15,6 @@
 }
 
 .rewSpan {
-  font-size: 16px;
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
@@ -41,8 +40,6 @@
 }
 
 .description {
-  font-size: 16px;
-
   color: #475467;
   margin-bottom: 62px;
 }
