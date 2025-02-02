@@ -8,8 +8,14 @@ import BookingForm from "../bookingForm/bookingForm.jsx";
 const Features = () => {
   const { camper } = useOutletContext();
 
+  const formatText = (text) => {
+    return text
+      .replace(/([A-Z])/g, " $1")
+      .replace(/^./, (str) => str.toUpperCase());
+  };
+
   const camperInfo = [
-    { label: "Form", value: camper.form },
+    { label: "Form", value: formatText(camper.form) },
     { label: "Length", value: camper.length },
     { label: "Width", value: camper.width },
     { label: "Height", value: camper.height },
