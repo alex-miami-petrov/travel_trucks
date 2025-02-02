@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import s from "./navigation.module.css";
+import logo from "../../img/logo.png";
 
 export const Navigation = () => {
   const location = useLocation();
@@ -7,23 +8,28 @@ export const Navigation = () => {
     location.pathname
   );
   return (
-    <nav className={s.nav}>
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          isActive ? `${s.link} ${s.active}` : s.link
-        }
-      >
-        Home
+    <header className={s.header}>
+      <NavLink to="/">
+        <img src={logo} alt="logo" />
       </NavLink>
-      <NavLink
-        to="/catalog"
-        className={({ isActive }) =>
-          isActive && !isDetailsPage ? `${s.link} ${s.active}` : s.link
-        }
-      >
-        Catalog
-      </NavLink>
-    </nav>
+      <nav className={s.nav}>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? `${s.link} ${s.active}` : s.link
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/catalog"
+          className={({ isActive }) =>
+            isActive && !isDetailsPage ? `${s.link} ${s.active}` : s.link
+          }
+        >
+          Catalog
+        </NavLink>
+      </nav>
+    </header>
   );
 };
