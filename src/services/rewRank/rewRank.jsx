@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import s from "./rewRank.module.css";
 import icons from "../../img/icons.svg";
 
@@ -8,7 +9,7 @@ export const RewRank = ({ camper, location }) => {
 
   return (
     <div className={s.rewLocWrap}>
-      <div className={s.rewWrap}>
+      <Link to={`/catalog/${camper.id}/reviews`} className={s.rewWrap}>
         <svg className={s.starIcon} width="16" height="16">
           <use href={`${icons}#icon-star`} />
         </svg>
@@ -18,7 +19,7 @@ export const RewRank = ({ camper, location }) => {
             {reviewsLength && `(${reviewsLength} Reviews)`}
           </span>
         </p>
-      </div>
+      </Link>
 
       <div className={s.locWrap}>
         <svg className={s.mapIcon} width="16" height="16">
