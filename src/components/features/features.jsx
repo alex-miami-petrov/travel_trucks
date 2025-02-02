@@ -4,17 +4,17 @@ import { featureIcons } from "../../utils/camperUtils.jsx";
 import icons from "../../img/icons.svg";
 import { useOutletContext } from "react-router-dom";
 import BookingForm from "../bookingForm/bookingForm.jsx";
-import { formatText } from "../../utils/formatText.jsx";
+import { formatMeasurement, formatText } from "../../utils/formatText.jsx";
 
 const Features = () => {
   const { camper } = useOutletContext();
 
   const camperInfo = [
     { label: "Form", value: formatText(camper.form) },
-    { label: "Length", value: camper.length },
-    { label: "Width", value: camper.width },
-    { label: "Height", value: camper.height },
-    { label: "Tank", value: camper.tank },
+    { label: "Length", value: formatMeasurement(camper.length) },
+    { label: "Width", value: formatMeasurement(camper.width) },
+    { label: "Height", value: formatMeasurement(camper.height) },
+    { label: "Tank", value: formatMeasurement(camper.tank) },
     { label: "Consumption", value: camper.consumption },
   ];
 
