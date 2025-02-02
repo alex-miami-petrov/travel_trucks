@@ -4,7 +4,7 @@ import { toggleFavorite } from "../../redux/favoritesSlice";
 import s from "./camperCard.module.css";
 import icons from "../../img/icons.svg";
 import { Link } from "react-router-dom";
-import { calculateAverageRating, featureIcons } from "../../utils/camperUtils";
+import { featureIcons } from "../../utils/camperUtils";
 import { RewRank } from "../../services/rewRank/rewRank.jsx";
 
 const CamperCard = ({ camper }) => {

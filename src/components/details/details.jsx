@@ -9,8 +9,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCamperById } from "../../redux/campers/operations.js";
 import s from "./details.module.css";
-import icons from "../../img/icons.svg";
-import { calculateAverageRating } from "../../utils/camperUtils";
 import Container from "../../utils/container/container.jsx";
 import Modal from "../imageModal/imageModal.jsx";
 import {

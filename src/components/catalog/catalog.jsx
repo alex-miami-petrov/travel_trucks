@@ -65,13 +65,11 @@ const Catalog = () => {
   const handleSearchClick = (e) => {
     e.preventDefault();
 
-    // Скидаємо фільтри
     dispatch(resetFilters());
 
-    setCampers([]); // очищаємо список кемперів
-    fetchCampersData(); // завантажуємо нові дані
+    setCampers([]);
+    fetchCampersData();
 
-    // Зберігаємо фільтри в localStorage
     localStorage.setItem("filters", JSON.stringify(filters));
   };
 
