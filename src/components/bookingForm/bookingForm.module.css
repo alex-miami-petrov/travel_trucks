@@ -11,15 +11,18 @@
   margin-bottom: 24px;
 }
 
+.form {
+  gap: 14px;
+}
+
 .field {
   color: #6c717b;
   border-radius: 12px;
   padding: 18px 337px 18px 18px;
   width: 527px;
-  height: 60px;
+  height: 50px;
   background-color: #f7f7f7;
   border: none;
-  margin-bottom: 14px;
   outline: none;
 }
 

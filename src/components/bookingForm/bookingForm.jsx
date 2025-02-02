@@ -70,7 +70,7 @@ const BookingForm = () => {
         onSubmit={handleSubmit}
       >
         {({ values, setFieldValue }) => (
-          <Form>
+          <Form className={s.form}>
             <div>
               <label htmlFor="name"></label>
               <Field
