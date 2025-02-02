@@ -8,6 +8,15 @@ import BookingForm from "../bookingForm/bookingForm.jsx";
 const Features = () => {
   const { camper } = useOutletContext();
 
+  const camperInfo = [
+    { label: "Form", value: camper.form },
+    { label: "Length", value: camper.length },
+    { label: "Width", value: camper.width },
+    { label: "Height", value: camper.height },
+    { label: "Tank", value: camper.tank },
+    { label: "Consumption", value: camper.consumption },
+  ];
+
   return (
     <div className={s.featContainer}>
       <div className={s.featWrap}>
@@ -24,30 +33,12 @@ const Features = () => {
         <div className={s.infoWrap}>
           <h2 className={s.infoTitle}>Vehicle details</h2>
           <ul className={s.infoList}>
-            <li className={s.infoItem}>
-              <p>Form</p>
-              <p>{camper.form}</p>
-            </li>
-            <li className={s.infoItem}>
-              <p>Length</p>
-              <p>{camper.length}</p>
-            </li>
-            <li className={s.infoItem}>
-              <p>Width</p>
-              <p>{camper.width}</p>
-            </li>
-            <li className={s.infoItem}>
-              <p>Height</p>
-              <p>{camper.height}</p>
-            </li>
-            <li className={s.infoItem}>
-              <p>Tank</p>
-              <p>{camper.tank}</p>
-            </li>
-            <li className={s.infoItem}>
-              <p>Consumption</p>
-              <p>{camper.consumption}</p>
-            </li>
+            {camperInfo.map(({ label, value }) => (
+              <li key={label} className={s.infoItem}>
+                <p>{label}</p>
+                <p>{value}</p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
