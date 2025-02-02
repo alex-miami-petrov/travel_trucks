@@ -5,14 +5,12 @@ export const authApi = axios.create({
   baseURL: "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers",
 });
 
-const API_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
-
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
   async (_, { getState }) => {
     const { filters } = getState();
-    console.log("Filters:", filters);
-    const response = await axios.get(API_URL, { params: filters });
+
+    const response = await axios.get(authApi, { params: filters });
     return response.data;
   }
 );

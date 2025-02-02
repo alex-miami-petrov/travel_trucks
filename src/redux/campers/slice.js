@@ -3,16 +3,6 @@ import axios from "axios";
 
 const API_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
 
-// export const fetchCampers = createAsyncThunk(
-//   "campers/fetchCampers",
-//   async (filters = {}) => {
-//     const params = new URLSearchParams(filters).toString();
-//     const response = await axios.get(`${API_URL}?${params}`);
-//     console.log("Fetched campers:", response.data);
-//     return response.data;
-//   }
-// );
-
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
   async (filters = {}) => {
@@ -26,9 +16,9 @@ export const fetchCampers = createAsyncThunk(
     });
 
     const params = new URLSearchParams(cleanFilters).toString();
-    console.log(`Generated URL: ${API_URL}?${params}`);
+
     const response = await axios.get(`${API_URL}?${params}`);
-    console.log("Fetched campers:", response.data);
+
     return response.data;
   }
 );
