@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import HomePage from "../src/pages/homePage";
+import HomePage from "./src/pages/homePage";
 import CatalogPage from "../src/pages/catalogPage";
 import CamperDetailsPage from "../src/pages/camperDetailsPage";
 
