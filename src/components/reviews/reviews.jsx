@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import s from "./reviews.module.css";
-import icons from "../../img/icons.svg";
 import BookingForm from "../bookingForm/bookingForm.jsx";
+import StarRating from "../../utils/starRating/starRating.jsx";
 
 const Reviews = () => {
   const { camper } = useOutletContext();
@@ -25,10 +25,11 @@ const Reviews = () => {
                   </p>
                   <div className={s.nameStarWrap}>
                     <p>{reviewer_name}</p>
-                    <p>{renderStars(reviewer_rating)}</p>
+                    <div className={s.starWrap}>
+                      <StarRating rating={reviewer_rating} />
+                    </div>
                   </div>
                 </div>
-
                 <p className={s.comment}>{comment}</p>
               </li>
             )
@@ -40,33 +41,6 @@ const Reviews = () => {
       </div>
     </div>
   );
-};
-
-const renderStars = (rating) => {
-  if (typeof rating !== "number" || rating < 0 || rating > 5) {
-    return null;
-  }
-
-  const filledStars = [];
-  const emptyStars = [];
-
-  for (let i = 0; i < rating; i++) {
-    filledStars.push(
-      <svg key={`filled-${i}`} className={s.starIcon} width="16" height="16">
-        <use href={`${icons}#icon-star`} />
-      </svg>
-    );
-  }
-
-  for (let i = 0; i < 5 - rating; i++) {
-    emptyStars.push(
-      <svg key={`empty-${i}`} className={s.starIcon} width="16" height="16">
-        <use href={`${icons}#icon-star-empty`} />
-      </svg>
-    );
-  }
-
-  return [...filledStars, ...emptyStars]; // Об'єднуємо заповнені та порожні зірки
 };
 
 export default Reviews;
