@@ -9,28 +9,6 @@
   margin-bottom: 8px;
 }
 
-.rewWrap {
-  display: flex;
-  align-items: baseline;
-}
-
-.rewLocWrap {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.locWrap {
-  display: flex;
-
-  gap: 4px;
-}
-
-.starIcon {
-  margin-right: 4px;
-  padding-top: 2px;
-}
-
 .mapIcon {
   fill: #101828;
   margin-top: 2px;

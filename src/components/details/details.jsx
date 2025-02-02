@@ -18,6 +18,7 @@ import {
   selectLoading,
   selectSelectedCamper,
 } from "../../redux/campers/selectors.js";
+import { RewRank } from "../../services/rewRank/rewRank.jsx";
 
 const Details = () => {
   const { id } = useParams();
@@ -69,8 +70,6 @@ const Details = () => {
     setSelectedImage(null);
   };
 
-  const averageRating = calculateAverageRating(camper.reviews, camper.rating);
-
   const locationString = camper.location.split(", ").reverse().join(", ");
 
   return (
@@ -79,25 +78,7 @@ const Details = () => {
         <div className={s.header}>
           <h2 className={s.title}>{camper.name}</h2>
         </div>
-        <div className={s.rewLocWrap}>
-          <div className={s.rewWrap}>
-            <svg className={s.starIcon} width="16" height="16">
-              <use href={`${icons}#icon-star`} />
-            </svg>
-            <p>
-              <span className={s.rewSpan}>
-                {averageRating.toFixed(1)}
-                {camper.reviews?.length && `(${camper.reviews.length} Reviews)`}
-              </span>
-            </p>
-          </div>
-          <div className={s.locWrap}>
-            <svg className={s.mapIcon} width="16" height="16">
-              <use href={`${icons}#icon-map`} />
-            </svg>
-            <p>{locationString}</p>
-          </div>
-        </div>
+        <RewRank camper={camper} location={locationString} />
         <p className={s.price}>€{camper.price.toFixed(2)}</p>
         <div className={s.gallery}>
           {camper.gallery?.map((img, index) => (

@@ -5,13 +5,12 @@ import s from "./camperCard.module.css";
 import icons from "../../img/icons.svg";
 import { Link } from "react-router-dom";
 import { calculateAverageRating, featureIcons } from "../../utils/camperUtils";
+import { RewRank } from "../../services/rewRank/rewRank.jsx";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const isFavorite = favorites.includes(camper.id);
-
-  const averageRating = calculateAverageRating(camper.reviews, camper.rating);
 
   const location = camper.location.split(", ").reverse().join(", ");
 
@@ -48,26 +47,7 @@ const CamperCard = ({ camper }) => {
             </div>
           </div>
         </div>
-        <div className={s.rewLocWrap}>
-          <div className={s.rewWrap}>
-            <svg className={s.starIcon} width="16" height="16">
-              <use href={`${icons}#icon-star`} />
-            </svg>
-            <p>
-              <span className={s.rewSpan}>
-                {averageRating.toFixed(1)}
-                {camper.reviews?.length && `(${camper.reviews.length} Reviews)`}
-              </span>
-            </p>
-          </div>
-
-          <div className={s.locWrap}>
-            <svg className={s.mapIcon} width="16" height="16">
-              <use href={`${icons}#icon-map`} />
-            </svg>
-            <p>{location}</p>
-          </div>
-        </div>
+        <RewRank camper={camper} location={location} />
         <div className={s.reviewWrapper}>
           {camper.reviews.length > 0 && (
             <p className={s.reviewText}>{camper.reviews[0].comment}</p>

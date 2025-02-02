@@ -1,0 +1,26 @@
+.rewLocWrap {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.locWrap {
+  display: flex;
+  gap: 4px;
+}
+
+.rewWrap {
+  display: flex;
+  align-items: baseline;
+}
+
+.rewSpan {
+  font-size: 16px;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.starIcon {
+  margin-right: 4px;
+  padding-top: 2px;
+}
