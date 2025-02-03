@@ -2,10 +2,10 @@ import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
 
-const HomePage = lazy(() => import("./pages/homePage/homePage.jsx"));
-const CatalogPage = lazy(() => import("./pages/catalogPage/catalogPage.jsx"));
+const HomePage = lazy(() => import("./pages/homePage/HomePage.jsx"));
+const CatalogPage = lazy(() => import("./pages/catalogPage/CatalogPage.jsx"));
 const CamperDetailsPage = lazy(() =>
-  import("./pages/camperDetailsPage/camperDetailsPage.jsx")
+  import("./pages/camperDetailsPage/CamperDetailsPage.jsx")
 );
 const Features = lazy(() => import("./components/features/features.jsx"));
 const Reviews = lazy(() => import("./components/reviews/reviews.jsx"));
