@@ -14,13 +14,15 @@ const useInitialData = (setCampers) => {
     const savedFilters = JSON.parse(localStorage.getItem("filters"));
     const savedCampers = JSON.parse(localStorage.getItem("campers"));
 
-    if (savedFilters) {
+    if (savedFilters && typeof savedFilters === "object") {
       dispatch(setLocation(savedFilters.location || ""));
-      savedFilters.equipment.forEach((key) => dispatch(toggleEquipment(key)));
+      if (Array.isArray(savedFilters.equipment)) {
+        savedFilters.equipment.forEach((key) => dispatch(toggleEquipment(key)));
+      }
       dispatch(setForm(savedFilters.form || ""));
     }
 
-    if (savedCampers) {
+    if (savedCampers && Array.isArray(savedCampers)) {
       setCampers(savedCampers);
     } else {
       fetchRandomCampers();
@@ -29,8 +31,10 @@ const useInitialData = (setCampers) => {
 
   const fetchRandomCampers = async () => {
     try {
-      const randomCampers = await fetchCampers({});
-      setCampers(randomCampers);
+      const savedFilters = JSON.parse(localStorage.getItem("filters")) || {};
+
+      const campers = await fetchCampers(savedFilters);
+      setCampers(campers);
     } catch (error) {
       console.error("Error fetching random campers:", error);
     }
