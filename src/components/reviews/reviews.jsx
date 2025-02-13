@@ -19,18 +19,20 @@ const Reviews = () => {
           {camper.reviews.map(
             ({ id, reviewer_name, reviewer_rating, comment }, index) => (
               <li key={id || index} className={s.reviewItem}>
-                <div className={s.avatar}>
-                  <p className={s.reviewerInitial}>
-                    {getFirstLetter(reviewer_name)}
-                  </p>
-                  <div className={s.nameStarWrap}>
-                    <p>{reviewer_name}</p>
-                    <div className={s.starWrap}>
-                      <StarRating rating={reviewer_rating} />
+                <article>
+                  <div className={s.avatar}>
+                    <p className={s.reviewerInitial}>
+                      {getFirstLetter(reviewer_name)}
+                    </p>
+                    <div className={s.nameStarWrap}>
+                      <p>{reviewer_name}</p>
+                      <div className={s.starWrap}>
+                        <StarRating rating={reviewer_rating} />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className={s.comment}>{comment}</p>
+                  <p className={s.comment}>{comment}</p>
+                </article>
               </li>
             )
           )}
